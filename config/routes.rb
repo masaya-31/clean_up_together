@@ -23,5 +23,6 @@ Rails.application.routes.draw do
         patch 'password_update'
       end
     end
+    resources :posts
   end
 end
