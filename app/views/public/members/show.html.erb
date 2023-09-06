@@ -1,2 +1,24 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-3">
+      <div class="border p-2">
+        <p>プロフィール</p>
+        <div class="m-3">
+          <p>表示名</p>
+          <p class="ml-2"><%= @member.name %></p>
+          <% if @member.introduction.present? %>
+            <p>自己紹介</p>
+            <p class="ml-2"><%= @member.introduction %></p>
+          <% end %>
+          <div class="mt-5">
+            <p><%= link_to "プロフィール編集へ", edit_member_path(@member) %></p>
+            <p><%= link_to "フォロー会員一覧へ", follows_member_path(@member) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9" style="background-color: yellow;">
+      <h2>メイン画面</h2>
+    </div>
+  </div>
+</div>
