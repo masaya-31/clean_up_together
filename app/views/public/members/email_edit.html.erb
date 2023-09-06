@@ -1,2 +1,15 @@
-<h1>Public::Members#email_edit</h1>
-<p>Find me in app/views/public/members/email_edit.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center pt-5">
+    <div class="col-lg-6">
+      <%= form_with(model:@member, url:email_update_member_path, method: :patch) do |f| %>
+        <div class="form-group">
+          <%= f.label "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="actions text-center">
+          <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
