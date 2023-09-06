@@ -11,7 +11,9 @@
             <p class="ml-2"><%= @member.introduction %></p>
           <% end %>
           <div class="mt-5">
-            <p><%= link_to "プロフィール編集へ", edit_member_path(@member) %></p>
+            <% if @member == current_member %>
+              <p><%= link_to "プロフィール編集へ", edit_member_path(@member) %></p>
+            <% end %>
             <p><%= link_to "フォロー会員一覧へ", follows_member_path(@member) %></p>
           </div>
         </div>
