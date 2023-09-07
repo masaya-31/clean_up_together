@@ -3,7 +3,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
-    @posts = @member.posts
+    @posts = @member.posts.published
   end
 
   def follows
