@@ -39,7 +39,7 @@
       </div>
     <% end %>
   </div>
-  <div class="row justify-content-center mt-3">
+  <div class="row justify-content-center my-3">
     <div class="col-lg-10">
       <div>
         <h5><strong>掃除方法</strong></h5>
@@ -48,8 +48,39 @@
       <% if @post.member == current_member %>
         <div class="text-right my-3">
           <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
-          <%= link_to "削除する", post_path, class: "btn btn-danger ml-3", method: :delete %>
+          <%= link_to "削除する", post_path, class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
         </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <!--コメント一覧表示-->
+      <% @post.post_comments.each do |post_comment| %>
+        <table class="mb-3">
+          <tbody>
+            <tr>
+              <td>
+                ユーザー名：<%= post_comment.member.name %>
+                <% if post_comment.member == current_member %>
+                  <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= post_comment.comment %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      <!--コメント作成フォーム-->
+      <% if @post.member != current_member %>
+        <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100" %>
+          <div class="text-right">
+            <%= f.submit "作成", class: "btn btn-success px-4" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
