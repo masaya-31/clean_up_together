@@ -3,6 +3,11 @@
     <div class="col-lg-10">
       <div class="form-group">
         <h2><%= @post.title %></h2>
+        <h6>投稿者：
+          <%= link_to member_path(@post.member) do %>
+            <%= @post.member.name %>
+          <% end %>
+        </h6>
       </div>
     </div>
   </div>
