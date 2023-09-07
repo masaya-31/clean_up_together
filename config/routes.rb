@@ -23,6 +23,8 @@ Rails.application.routes.draw do
         patch 'password_update'
       end
     end
-    resources :posts
+    resources :posts do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 end
