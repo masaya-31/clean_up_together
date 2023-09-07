@@ -5,30 +5,7 @@
         <h2>記事一覧</h2>
         <div class="ml-5"><%= link_to "新規投稿", new_post_path, class: "btn btn-success" %></div>
       </div>
-      <% @posts.each do |post| %>
-        <div class="d-flex m-3">
-          <div>
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.get_after_image(100,150) %>
-            <% end %>
-          </div>
-
-          <div class="ml-3">
-            <div>
-              <%= link_to post_path(post) do %>
-                <%= post.title %>
-              <% end %>
-              <span class="ml-3">投稿者:</span>
-              <%= link_to member_path(post.member) do %>
-                <%= post.member.name %>
-              <% end %>
-            </div>
-            <%= link_to post_path(post) do %>
-              <div><%= post.body %></div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <%= render "index", posts: @posts %>
     </div>
     <div class="col-4">
       <div class="sidebar" style="background-color: orange;">

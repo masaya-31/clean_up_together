@@ -1,6 +1,9 @@
 class Public::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+    @posts = @member.posts
   end
 
   def follows

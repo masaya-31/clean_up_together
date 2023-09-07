@@ -19,8 +19,14 @@
         </div>
       </div>
     </div>
-    <div class="col-9" style="background-color: yellow;">
-      <h2>メイン画面</h2>
+    <div class="col-9">
+      <div class="d-flex">
+        <h2>投稿記事一覧</h2>
+        <div class="ml-5"><%= link_to "新規投稿", new_post_path, class: "btn btn-success" %></div>
+      </div>
+        <%= render "public/posts/index", posts: @posts %>
+      <h2>お気に入り記事一覧</h2>
+      <%= render "public/posts/index", posts: @favorite_posts %>
     </div>
   </div>
 </div>
