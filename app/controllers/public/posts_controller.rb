@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :is_publish, :member_id)
+    params.require(:post).permit(:title, :body, :before_image, :after_image, :is_publish, :member_id)
   end
 
 end

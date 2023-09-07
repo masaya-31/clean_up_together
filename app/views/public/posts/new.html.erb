@@ -12,12 +12,12 @@
       <div class="col-lg-4">
         <div class="form-group">
           <h5><strong><%= f.label "作業前画像" %></strong></h5>
-          <div><%= f.file_field :image, accept: "image/*" %></div>
+          <div><%= f.file_field :before_image, accept: "image/*" %></div>
         </div>
       </div>
       <div class="col-lg-4">
         <h5><strong><%= f.label "作業後画像" %></strong></h5>
-        <div><%= f.file_field :image, accept: "image/*" %></div>
+        <div><%= f.file_field :after_image, accept: "image/*" %></div>
       </div>
     </div>
     <div class="row justify-content-center mt-3">
