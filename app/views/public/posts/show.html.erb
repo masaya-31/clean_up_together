@@ -1,2 +1,42 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="form-group">
+        <h2><%= @post.title %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <% if @post.before_image.attached? %>
+      <div class="col-lg-8 d-flex justify-content-between">
+        <div>
+          <%= image_tag @post.get_before_image(300,300) %>
+          <h5><strong>作業前画像</strong></h5>
+        </div>
+        <div>
+          <%= image_tag @post.get_after_image(300,300) %>
+          <h5><strong>作業後画像</strong></h5>
+        </div>
+      </div>
+    <% else %>
+      <div>
+        <%= image_tag @post.get_after_image(300,300) %>
+        <h5><strong>作業後画像</strong></h5>
+      </div>
+    <% end %>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-10">
+      <div>
+        <h5><strong>掃除方法</strong></h5>
+        <%= @post.body %>
+      </div>
+      <% if @post.member == current_member %>
+        <div class="text-right my-3">
+          <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
+          <%= link_to "削除する", post_path, class: "btn btn-danger ml-3", method: :delete %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
