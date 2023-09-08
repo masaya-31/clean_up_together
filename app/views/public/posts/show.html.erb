@@ -9,7 +9,7 @@
               <%= @post.member.name %>
             <% end %>
           </span>
-          <% if @post.member != current_member %>
+          <% if @post.member != current_member && member_signed_in? %>
             <% if @post.favorited_by?(current_member) %>
               <%= link_to "お気に入り削除", post_favorites_path(@post), method: :delete,  class: "btn-sm btn-secondary ml-4" %>
             <% else %>
@@ -74,7 +74,7 @@
         </table>
       <% end %>
       <!--コメント作成フォーム-->
-      <% if @post.member != current_member %>
+      <% if @post.member != current_member && member_signed_in? %>
         <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
           <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100" %>
           <div class="text-right">

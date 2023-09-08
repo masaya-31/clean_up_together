@@ -1,2 +1,17 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-8">
+      <div>
+        <h2>おすすめ記事</h2>
+        <%= render 'public/posts/top', posts: @posts %>
+      </div>
+      <div>
+        <h2>新着記事</h2>
+        <%= render 'public/posts/top', posts: @posts %>
+      </div>
+    </div>
+    <div class="col-4">
+      <h2>サイドバー</h2>
+    </div>
+  </div>
+</div>
