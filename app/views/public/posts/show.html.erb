@@ -43,7 +43,7 @@
     <div class="col-lg-10">
       <div>
         <h5><strong>掃除方法</strong></h5>
-        <%= @post.body %>
+        <%=safe_join(@post.body.split("\n"), tag(:br))%>
       </div>
       <% if @post.member == current_member %>
         <div class="text-right my-3">

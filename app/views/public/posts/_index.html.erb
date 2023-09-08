@@ -17,7 +17,9 @@
         <% end %>
       </div>
       <%= link_to post_path(post) do %>
-        <div><%= post.body %></div>
+        <div>
+          <%= truncate(post.body, length: 20) %>
+        </div>
       <% end %>
     </div>
   </div>

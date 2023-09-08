@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-8">
+      <div class="d-flex">
+        <h2><%= @member.name %>さんの記事一覧</h2>
+      </div>
+      <% @posts.each do |post| %>
+        <div class="d-flex m-3">
+          <div>
+            <%= link_to do %>
+              <%= image_tag post.get_after_image(100,150) %>
+            <% end %>
+          </div>
+
+          <div class="ml-3">
+            <div>
+              <%= link_to do %>
+                <%= post.title %>
+              <% end %>
+              <span class="ml-3">投稿者:</span>
+              <%= link_to edit_admin_member_path(post.member) do %>
+                <%= post.member.name %>
+              <% end %>
+            </div>
+            <div>
+              <%= truncate(post.body, length: 20) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <div class="sidebar" style="background-color: orange;">
+        <h2>タグサイドバー</h2>
+      </div>
+    </div>
+  </div>
+</div>

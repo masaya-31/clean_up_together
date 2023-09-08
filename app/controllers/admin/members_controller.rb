@@ -13,6 +13,11 @@ class Admin::MembersController < ApplicationController
     redirect_to admin_members_path
   end
 
+  def posts
+    @member = Member.find(params[:id])
+    @posts = @member.posts
+  end
+
   private
 
   def member_params
