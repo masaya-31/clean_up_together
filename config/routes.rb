@@ -10,7 +10,17 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  #会員用
+  # 管理者側
+  namespace :admin do
+    resources :members, only: [:index, :edit, :update] do
+      member do
+        get 'posts'
+        get 'comments'
+      end
+    end
+  end
+
+  #会員側
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
