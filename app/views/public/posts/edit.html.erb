@@ -1,2 +1,43 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container my-5">
+  <%= form_with(model:@post, url:post_path, method: :patch) do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="form-group">
+          <h2><%= f.label "タイトル(必須)" %></h2>
+          <%= f.text_field :title, autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <h5><strong><%= f.label "作業前画像(任意)" %></strong></h5>
+          <% if @post.before_image.attached? %>
+            <%= image_tag @post.get_before_image(300,300) %>
+          <% end %>
+          <div><%= f.file_field :before_image, accept: "image/*" %></div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h5><strong><%= f.label "作業後画像(必須)" %></strong></h5>
+        <%= image_tag @post.get_after_image(300,300) %>
+        <div><%= f.file_field :after_image, accept: "image/*" %></div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-lg-10">
+        <div class="form-group">
+          <h5><strong><%= f.label "掃除方法(必須)" %></strong></h5>
+          <%= f.text_area :body, class: "form-control", rows: 20 %>
+        </div>
+        <div class="text-right">
+          <%= f.radio_button :is_publish, true, checked: true %>
+          <%= f.label :is_publish_true, "公開" %>
+          <%= f.radio_button :is_publish, false, class: "ml-3" %>
+          <%= f.label :is_publish_false, "非公開" %>
+          <%= f.submit "更新する", class: "ml-3" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

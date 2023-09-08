@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_one_attached :before_image
   has_one_attached :after_image
   validates :after_image, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
 
   scope :published, -> {where(is_publish: true)}
   scope :unpublished, -> {where(is_publish: false)}
