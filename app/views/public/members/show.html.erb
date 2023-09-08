@@ -8,7 +8,9 @@
           <p class="ml-2"><%= @member.name %></p>
           <% if @member.introduction.present? %>
             <p>自己紹介</p>
-            <p class="ml-2"><%= @member.introduction %></p>
+            <p class="ml-2">
+              <%= safe_join(@member.introduction.split("\n"), tag(:br)) %>
+            </p>
           <% end %>
           <div class="mt-5">
             <% if @member == current_member %>
