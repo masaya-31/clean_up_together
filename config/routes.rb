@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about"
     resources :members, only: [:show, :edit, :update] do
+      resources :events
       member do
         get 'follows'
         get 'email_edit'
