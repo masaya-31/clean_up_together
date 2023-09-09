@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   def index
-    if params[:search].present?
-      @posts = Post.posts_serach(params[:search])
+    if params[:keyword].present?
+      @posts = Post.search(params[:keyword])
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @posts = @tag.posts.order(created_at: :desc)
@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
     end
     @tags = Tag.all
     @all_posts_count = @posts.count
+    @keyword = params[:keyword]
   end
 
   def show

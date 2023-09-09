@@ -40,4 +40,8 @@ class Post < ApplicationRecord
       self.tags << new_tag
     end
   end
+
+  def self.search(keyword)
+    where("title LIKE ? or body LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
+  end
 end
