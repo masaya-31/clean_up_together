@@ -45,6 +45,12 @@
         <h5><strong>掃除方法</strong></h5>
         <%=safe_join(@post.body.split("\n"), tag(:br))%>
       </div>
+      <div class="my-5">
+        <h5><strong>タグ</strong></h5>
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+        <% end %>
+      </div>
       <% if @post.member == current_member %>
         <div class="text-right my-3">
           <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>

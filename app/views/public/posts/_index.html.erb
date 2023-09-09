@@ -1,26 +1,18 @@
 <% posts.each do |post| %>
   <div class="d-flex m-3">
-    <div>
-      <%= link_to post_path(post) do %>
-        <%= image_tag post.get_after_image(100,150) %>
-      <% end %>
-    </div>
-
-    <div class="ml-3">
+    <%= link_to post_path(post) do %>
       <div>
-        <%= link_to post_path(post) do %>
-          <%= post.title %>
-        <% end %>
+        <%= image_tag post.get_after_image(100,150) %>
+
+        <%= post.title %>
         <span class="ml-3">投稿者:</span>
-        <%= link_to member_path(post.member) do %>
-          <%= post.member.name %>
+        <%= post.member.name %>
+        <span class="ml-3">タグ:</span>
+        <% post.tags.each do |tag| %>
+          <%= tag.name %>
         <% end %>
+        <%= truncate(post.body, length: 20) %>
       </div>
-      <%= link_to post_path(post) do %>
-        <div>
-          <%= truncate(post.body, length: 20) %>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 <% end %>
