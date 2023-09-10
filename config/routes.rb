@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    resources :events, only: [:index, :create, :edit, :update, :destroy]
     resources :members, only: [:show, :edit, :update] do
-      resources :events
       member do
         get 'follows'
         get 'email_edit'

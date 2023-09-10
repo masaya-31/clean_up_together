@@ -15,7 +15,7 @@
           <div class="mt-5">
             <% if @member == current_member %>
               <p><%= link_to "プロフィール編集へ", edit_member_path(@member) %></p>
-              <p><%= link_to "カレンダーへ", member_events_path(@member) %></p>
+              <p><%= link_to "カレンダーへ", events_path %></p>
             <% end %>
             <p><%= link_to "フォロー会員一覧へ", follows_member_path(@member) %></p>
           </div>

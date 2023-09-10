@@ -1,22 +1,87 @@
-<h1>Public::Events#index</h1>
-<p>Find me in app/views/public/events/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="my-3">
+        <h6>予定追加</h6>
+        <%= form_with(model: @event, url:events_path, method: :post, local: true) do |f| %>
+        <div>
+          <%= f.label "タイトル" %>
+          <%= f.text_field :title %>
+        </div>
 
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
-  <% events.each do |event| %>
-    <div><%= event.title %></div>
-  <% end %>
-<% end %>
+        <div>
+          <%= f.label "作業日" %>
+          <%= f.datetime_select :start_time %>
+        </div>
 
-<%= form_with(model: @event, url:member_events_path, method: :post, local: true) do |f| %>
-  <%= f.label "タイトル" %>
-  <%= f.text_field :title %>
+        <div>
+          <%= f.label "参考記事" %>
+          <%= f.radio_button :select_post, 0, checked: true %>
+          <%= f.label :select_post_0, "記事なし" %>
 
-  <%= f.label "作業日" %>
-  <%= f.datetime_select :start_time %>
+          <% if current_member.posts.present? %>
+            <%= f.radio_button :select_post, 1 %>
+            <%= f.label :select_post_1, "自分の投稿" %>
+            <%= f.select :post_id, options_from_collection_for_select(current_member.posts, :id, :title), prompt: "記事を選択してください" %>
+          <% end %>
 
-  <div>
-    <%= f.submit "作成する" %>
+          <% if @favorite_posts.present? %>
+            <%= f.radio_button :select_post, 2 %>
+            <%= f.label :select_post_2, "お気に入り投稿" %>
+            <%= f.select :favorite_post_id, options_from_collection_for_select(@favorite_posts, :id, :title), prompt: "記事を選択してください" %>
+          <% end %>
+        </div>
+
+        <div>
+          <%= f.submit "作成する" %>
+        </div>
+        <% end %>
+      </div>
+      <div>
+        <%= month_calendar events: @events do |date, events| %>
+          <%= date.day %>
+          <% events.each do |event| %>
+            <div><%= event.title %></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+      	<div class="schedule">今後の予定一覧</div>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>タイトル</th>
+              <th>日程</th>
+              <th>参考記事</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @events.each do |event| %>
+              <tr>
+                <td><%= event.title %></td>
+                <td><%= event.start_time.strftime("%m-%d") %></td>
+                <td>
+                  <% if event.post_id == -1 %>
+                  <% else %>
+                    <%= link_to post_path(event.post_id) do %>
+                      <%= event.post.title %>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to "編集", edit_event_path(event),  class: "btn btn-success" %>
+                </td>
+                <td>
+                  <%= link_to "削除", event_path(event), method: :delete,  class: "btn btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-
-<% end %>
+</div>

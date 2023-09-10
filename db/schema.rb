@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2023_09_09_135509) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "post_id"
     t.string "title"
     t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
