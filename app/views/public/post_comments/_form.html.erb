@@ -1,0 +1,6 @@
+<%= form_with(model:[@post, @post_comment], local: false) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
+  <div class="text-right">
+    <%= f.submit "作成", class: "btn btn-success px-4" %>
+  </div>
+<% end %>

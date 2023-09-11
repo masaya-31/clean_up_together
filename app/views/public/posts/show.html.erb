@@ -65,34 +65,20 @@
       <!--コメント一覧表示-->
       <div class=" d-flex mb-3">
         <h5>コメント一覧</h5>
-        <span class="ml-5">コメント件数：<%= @post.post_comments.count %></span>
+        <span class="ml-5 post-comments-counter">
+          <%= render 'public/post_comments/counter', post: @post %>
+        </span>
       </div>
-      <% @post.post_comments.each do |post_comment| %>
-        <table class="mb-3">
-          <tbody>
-            <tr>
-              <td>
-                ユーザー名：<%= post_comment.member.name %>
-                <% if post_comment.member == current_member %>
-                  <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td><%= post_comment.comment %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
+      <div class="post-comments-index">
+        <%= render 'public/post_comments/index', post: @post %>
+      </div>
+
       <!--コメント作成フォーム-->
-      <% if @post.member != current_member && member_signed_in? %>
-        <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100" %>
-          <div class="text-right">
-            <%= f.submit "作成", class: "btn btn-success px-4" %>
-          </div>
+      <div class="post-comments-form">
+        <% if @post.member != current_member && member_signed_in? %>
+          <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
