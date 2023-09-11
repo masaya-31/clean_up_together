@@ -2,8 +2,8 @@
   <% posts.each do |post| %>
   <div class="m-3">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.get_after_image(150,150) %>
-      <div><%= post.title %></div>
+      <%= image_tag post.get_after_image(180,150) %>
+      <div><%= truncate(post.title, length: 12) %></div>
     <% end %>
   </div>
   <% end %>
