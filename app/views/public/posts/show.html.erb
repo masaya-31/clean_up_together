@@ -9,13 +9,13 @@
               <%= @post.member.name %>
             <% end %>
           </span>
-          <span class="mx-3">お気に入り数：<%= @post.favorites.count %></span>
+          <span class="mx-3 post-favorites-counter">
+            <%= render 'public/favorites/counter', post: @post %>
+          </span>
           <% if @post.member != current_member && member_signed_in? %>
-            <% if @post.favorited_by?(current_member) %>
-              <%= link_to "お気に入り削除", post_favorites_path(@post), method: :delete,  class: "btn-sm btn-secondary ml-4" %>
-            <% else %>
-              <%= link_to "お気に入り登録", post_favorites_path(@post), method: :post, class: "btn-sm btn-success ml-4" %>
-            <% end %>
+            <span class=<%= "favorite-" + @post.id.to_s %>>
+              <%= render 'public/favorites/favorite', post: @post %>
+            </span>
           <% end %>
         </div>
       </div>
