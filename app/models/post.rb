@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :member
   has_many :favorites, dependent: :destroy
+  has_many :favorited_members, through: :favorites, source: :member
   has_many :post_comments, dependent: :destroy
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags

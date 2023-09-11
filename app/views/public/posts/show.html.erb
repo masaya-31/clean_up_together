@@ -9,6 +9,7 @@
               <%= @post.member.name %>
             <% end %>
           </span>
+          <span class="mx-3">お気に入り数：<%= @post.favorites.count %></span>
           <% if @post.member != current_member && member_signed_in? %>
             <% if @post.favorited_by?(current_member) %>
               <%= link_to "お気に入り削除", post_favorites_path(@post), method: :delete,  class: "btn-sm btn-secondary ml-4" %>
