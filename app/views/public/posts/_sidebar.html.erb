@@ -1,6 +1,8 @@
 <div class="sidebar">
   <% tags.each do |tag| %>
-    <%= link_to tag.name, posts_path(tag_id: tag.id) %>
-    <%= "(#{tag.posts.count})" %>
+    <% unless tag.posts.count == 0 %>
+      <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+      <%= "(#{tag.posts.count})" %>
+    <% end %>
   <% end %>
 </div>

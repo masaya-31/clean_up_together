@@ -2,40 +2,7 @@
   <div class="row">
     <div class="col-12">
       <div class="my-3">
-        <h6>予定追加</h6>
-        <%= form_with(model: @event, url:events_path, method: :post, local: true) do |f| %>
-        <div>
-          <%= f.label "タイトル" %>
-          <%= f.text_field :title %>
-        </div>
-
-        <div>
-          <%= f.label "作業日" %>
-          <%= f.datetime_select :start_time %>
-        </div>
-
-        <div>
-          <%= f.label "参考記事" %>
-          <%= f.radio_button :select_post, 0, checked: true %>
-          <%= f.label :select_post_0, "記事なし" %>
-
-          <% if current_member.posts.present? %>
-            <%= f.radio_button :select_post, 1 %>
-            <%= f.label :select_post_1, "自分の投稿" %>
-            <%= f.select :post_id, options_from_collection_for_select(current_member.posts, :id, :title), prompt: "記事を選択してください" %>
-          <% end %>
-
-          <% if @favorite_posts.present? %>
-            <%= f.radio_button :select_post, 2 %>
-            <%= f.label :select_post_2, "お気に入り投稿" %>
-            <%= f.select :favorite_post_id, options_from_collection_for_select(@favorite_posts, :id, :title), prompt: "記事を選択してください" %>
-          <% end %>
-        </div>
-
-        <div>
-          <%= f.submit "作成する" %>
-        </div>
-        <% end %>
+        <%= link_to "予定追加", new_event_path, class: "btn btn-primary" %>
       </div>
       <div>
         <%= month_calendar events: @events do |date, events| %>
@@ -46,7 +13,7 @@
         <% end %>
       </div>
       <div>
-      	<div class="schedule">今後の予定一覧</div>
+      	<div class="schedule">今後の予定一覧（直近1ヶ月）</div>
         <table class="table">
           <thead class="thead-light">
             <tr>

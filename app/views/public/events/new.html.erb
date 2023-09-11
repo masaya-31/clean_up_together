@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center my-5">
     <div class="col-8">
-      <%= form_with(model: @event, url:event_path, method: :patch, local: true) do |f| %>
+      <%= form_with(model: @event, url:events_path, method: :post, local: true) do |f| %>
         <div>
           <h3><%= f.label "タイトル" %></h3>
           <%= f.text_field :title, class: "form-control" %>
@@ -15,7 +15,7 @@
         <div class="mt-3">
           <h3><%= f.label "参考記事" %></h3>
           <div>
-            <%= f.radio_button :select_post, 0 %>
+            <%= f.radio_button :select_post, 0, checked: true %>
             <%= f.label :select_post_0, "記事なし" %>
           </div>
 
