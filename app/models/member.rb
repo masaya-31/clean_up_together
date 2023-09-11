@@ -9,4 +9,6 @@ class Member < ApplicationRecord
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :post_comments, dependent: :destroy
   has_many :events, dependent: :destroy
+
+  validates :name, presence: true
 end

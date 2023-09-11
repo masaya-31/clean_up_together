@@ -28,7 +28,7 @@ class Public::EventsController < ApplicationController
     if @event.save
       redirect_to events_path
     else
-      redirect_to member_path(current_member)
+      redirect_to new_event_path
     end
   end
 
