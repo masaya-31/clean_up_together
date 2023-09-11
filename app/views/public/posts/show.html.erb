@@ -63,6 +63,10 @@
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <!--コメント一覧表示-->
+      <div class=" d-flex mb-3">
+        <h5>コメント一覧</h5>
+        <span class="ml-5">コメント件数：<%= @post.post_comments.count %></span>
+      </div>
       <% @post.post_comments.each do |post_comment| %>
         <table class="mb-3">
           <tbody>
