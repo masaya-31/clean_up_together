@@ -26,8 +26,9 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
     resources :events, only: [:new, :index, :create, :edit, :update, :destroy]
     resources :members, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get "following" => "relationships#following", as: "following"
       member do
-        get 'follows'
         get 'email_edit'
         get 'password_edit'
         patch 'email_update'

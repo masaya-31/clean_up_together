@@ -16,8 +16,12 @@
             <% if @member == current_member %>
               <p><%= link_to "プロフィール編集へ", edit_member_path(@member) %></p>
               <p><%= link_to "カレンダーへ", events_path %></p>
+            <% else %>
+              <div class="my-3">
+                <%= render 'public/relationships/form', member: @member %>
+              </div>
             <% end %>
-            <p><%= link_to "フォロー会員一覧へ", follows_member_path(@member) %></p>
+            <p><%= link_to "フォロー会員一覧へ", member_following_path(@member) %></p>
           </div>
         </div>
       </div>
