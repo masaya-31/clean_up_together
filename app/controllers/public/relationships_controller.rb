@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_member!
   # フォロー追加機能
   def create
     member = Member.find(params[:member_id])

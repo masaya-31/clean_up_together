@@ -1,14 +1,21 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_member!, except: [:index, :show]
+  before_action :ensure_correct_member, except: [:index, :show, :new]
+  
   def index
+    # キーワード検索の時
     if params[:keyword].present?
       @posts = Post.search(params[:keyword])
+    # タグ検索の時
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @posts = @tag.posts.order(created_at: :desc)
+    # 全ての投稿一覧
     else
       @posts = Post.all.order(created_at: :desc)
     end
     @tags = Tag.all
+    # 投稿件数
     @all_posts_count = @posts.count
     @keyword = params[:keyword]
   end
@@ -61,5 +68,12 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :before_image, :after_image, :is_publish, :member_id)
   end
-
+  # 投稿作成会員か認証
+  def ensure_correct_member
+    post = Post.find(params[:id])
+    member = post.member
+    unless member.id == current_member.id
+      redirect_to member_path(current_member)
+    end
+  end
 end

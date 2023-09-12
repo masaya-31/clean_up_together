@@ -1,12 +1,12 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!
+  before_action :ensure_correct_member, except: [:show]
+  
   def show
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
     @posts = @member.posts.published
-  end
-
-  def follows
   end
 
   def edit
@@ -50,5 +50,12 @@ class Public::MembersController < ApplicationController
 
   def member_email_params
     params.require(:member).permit(:email)
+  end
+
+  def ensure_correct_member
+    member = Member.find(params[:id])
+    unless member.id == current_member.id
+      redirect_to member_path(current_member)
+    end
   end
 end
