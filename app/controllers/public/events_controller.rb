@@ -1,6 +1,7 @@
 class Public::EventsController < ApplicationController
   before_action :authenticate_member!
-  
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy]
+
   def index
     @events = current_member.events
   end
@@ -68,5 +69,13 @@ class Public::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :start_time, :member_id, :post_id, :select_post)
+  end
+
+  def ensure_correct_member
+    event = Event.find(params[:id])
+    member = event.member
+    unless member.id == current_member.id
+      redirect_to member_path(current_member)
+    end
   end
 end
