@@ -1,4 +1,10 @@
 ja:
+  enums:
+    event:
+      select_post:
+        no_post: "記事なし"
+        my_post: "自分の投稿"
+        favorite_post: "お気に入り投稿"
   activerecord:
     errors:
       messages:

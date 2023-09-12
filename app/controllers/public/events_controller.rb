@@ -17,13 +17,17 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if params[:event][:select_post] == "0"
+
+    if params[:event][:select_post] == 'no_post'
       @event.post_id = -1
-    elsif params[:event][:select_post] == "1"
-      @event.post_id = Post.find(params[:event][:post_id]).id
-    elsif params[:event][:select_post] == "2"
-      @event.post_id = Post.find(params[:event][:favorite_post_id]).id
+    elsif params[:event][:select_post] == 'my_post'
+      @selected_post = current_member.posts.find(params[:member_post_id])
+      @event.post_id = @selected_post.id
+    elsif params[:event][:select_post] == 'favorite_post'
+      @selected_post = Post.find(params[:favorite_post_id])
+      @event.post_id = @selected_post.id
     end
+
     @event.member_id = current_member.id
     if @event.save
       redirect_to events_path
@@ -34,15 +38,18 @@ class Public::EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if params[:event][:select_post] == "0"
+    if params[:event][:select_post] == 'no_post'
       @event.post_id = -1
-    elsif params[:event][:select_post] == "1"
-      @event.post_id = Post.find(params[:event][:post_id]).id
-    elsif params[:event][:select_post] == "2"
-      @event.post_id = Post.find(params[:event][:favorite_post_id]).id
+    elsif params[:event][:select_post] == 'my_post'
+      @selected_post = current_member.posts.find(params[:member_post_id])
+      @event.post_id = @selected_post.id
+    elsif params[:event][:select_post] == 'favorite_post'
+      @selected_post = Post.find(params[:favorite_post_id])
+      @event.post_id = @selected_post.id
     end
+
     @event.member_id = current_member.id
-    if @event.save
+    if @event.update(event_params)
       redirect_to events_path
     else
       redirect_to member_path(current_member)
@@ -58,6 +65,6 @@ class Public::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :start_time, :member_id, :post_id)
+    params.require(:event).permit(:title, :start_time, :member_id, :post_id, :select_post)
   end
 end
