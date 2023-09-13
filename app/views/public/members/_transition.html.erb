@@ -1,0 +1,13 @@
+<div class="row mb-3">
+  <div class="col text-center">
+    <%= link_to "公開記事", member_path(member) %>
+  </div>
+  <% if @member == current_member %>
+    <div class="col text-center">
+      <%= link_to "非公開記事", unpublish_members_path %>
+    </div>
+  <% end %>
+  <div class="col text-center">
+    <%= link_to "お気に入り記事", member_favorite_path(member) %>
+  </div>
+</div>

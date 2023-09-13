@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :members, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get "following" => "relationships#following", as: "following"
+      get "favorite"
+      get "unpublish", on: :collection
       member do
         get 'email_edit'
         get 'password_edit'

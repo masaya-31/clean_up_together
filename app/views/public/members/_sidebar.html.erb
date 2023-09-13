@@ -1,0 +1,26 @@
+<div class="col-3">
+  <div class="border p-2">
+    <p>プロフィール</p>
+    <div class="m-3">
+      <p>表示名</p>
+      <p class="ml-2"><%= member.name %></p>
+      <% if member.introduction.present? %>
+        <p>自己紹介</p>
+        <p class="ml-2">
+          <%= safe_join(member.introduction.split("\n"), tag(:br)) %>
+        </p>
+      <% end %>
+      <div class="mt-5">
+        <% if member == current_member %>
+          <p><%= link_to "プロフィール編集へ", edit_member_path(member) %></p>
+          <p><%= link_to "カレンダーへ", events_path %></p>
+        <% else %>
+          <div class="my-3">
+            <%= render 'public/relationships/form', member: member %>
+          </div>
+        <% end %>
+        <p><%= link_to "フォロー会員一覧へ", member_following_path(member) %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,23 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
-  before_action :ensure_correct_member, except: [:show]
-  
+  before_action :ensure_correct_member, except: [:show, :favorite, :unpublish]
+
   def show
     @member = Member.find(params[:id])
     favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
     @posts = @member.posts.published
+  end
+
+  def favorite
+    @member = Member.find(params[:member_id])
+    @favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
+    @favorite_posts = Post.find(@favorites)
+  end
+
+  def unpublish
+    @member = current_member
+    @unpublish_posts = @member.posts.unpublished
   end
 
   def edit

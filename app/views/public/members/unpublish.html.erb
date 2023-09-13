@@ -4,7 +4,7 @@
     <div class="col-9">
       <%= render 'public/members/transition', member: @member %>
       <div class="d-flex">
-        <h2>投稿記事一覧</h2>
+        <h2>非公開記事</h2>
         <% if @member == current_member %>
           <div class="ml-5">
             <%= link_to "新規投稿", new_post_path, class: "btn btn-success" %>
@@ -12,7 +12,7 @@
         <% end %>
       </div>
       <div>
-        <%= render "public/posts/index", posts: @posts %>
+        <%= render "public/posts/index", posts: @unpublish_posts %>
       </div>
     </div>
   </div>
