@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show]
-  before_action :ensure_correct_member, except: [:index, :show, :new]
-  
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy]
+
   def index
     # キーワード検索の時
     if params[:keyword].present?
