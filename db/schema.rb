@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_131559) do
     t.integer "member_id", null: false
     t.integer "post_id"
     t.string "title", null: false
-    t.datetime "start_time", null: false
+    t.date "start_time", null: false
     t.integer "select_post"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

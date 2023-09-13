@@ -11,3 +11,11 @@ Admin.create!(
   email: 'admin@admin',
   password: '111111'
   )
+
+3.times do |n|
+  Member.create(
+    name: "test#{n}",
+    email:"test#{n}@test",
+    password:"aaaaa#{n}"
+    )
+end
