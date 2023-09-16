@@ -7,14 +7,14 @@
       <% @posts.each do |post| %>
         <div class="d-flex m-3">
           <div>
-            <%= link_to do %>
+            <%= link_to admin_post_path(post) do %>
               <%= image_tag post.get_after_image(100,150) %>
             <% end %>
           </div>
 
           <div class="ml-3">
             <div>
-              <%= link_to do %>
+              <%= link_to admin_post_path(post) do %>
                 <%= post.title %>
               <% end %>
               <span class="ml-3">投稿者:</span>

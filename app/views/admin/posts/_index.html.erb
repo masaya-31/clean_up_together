@@ -1,0 +1,22 @@
+<% posts.each do |post| %>
+  <div class="d-flex m-3">
+    <div class="mx-3">
+      <%= link_to admin_post_path(post) do %>
+        <%= image_tag post.get_after_image(100,150) %>
+      <% end %>
+    </div>
+    <div>
+      <div>
+        <%= link_to admin_post_path(post) do %>
+          <%= post.title %>
+        <% end %>
+      </div>
+      <div>
+        <span class="ml-3">投稿者:</span>
+        <%= link_to edit_admin_member_path(post.member_id) do %>
+          <%= post.member.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

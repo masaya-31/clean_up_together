@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
+  end
+
   # 会員用
   devise_for :members, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -12,12 +16,16 @@ Rails.application.routes.draw do
 
   # 管理者側
   namespace :admin do
+    get 'search' => 'homes#search', as: 'search'
     resources :members, only: [:index, :edit, :update] do
       member do
         get 'posts'
         get 'comments'
       end
     end
+    resources :posts, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy]
   end
 
   #会員側

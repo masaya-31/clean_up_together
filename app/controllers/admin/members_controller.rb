@@ -1,4 +1,6 @@
 class Admin::MembersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @members = Member.all
   end
@@ -16,6 +18,11 @@ class Admin::MembersController < ApplicationController
   def posts
     @member = Member.find(params[:id])
     @posts = @member.posts
+  end
+
+  def comments
+    @member = Member.find(params[:id])
+    @comments = @member.post_comments
   end
 
   private

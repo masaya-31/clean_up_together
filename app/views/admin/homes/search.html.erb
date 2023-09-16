@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h2>検索結果</h2>
+      <% if @result.exists? %>
+        <% if @model == 'member' %>
+          <%= render 'admin/members/index', members: @result %>
+        <% else %>
+          <%= render 'admin/posts/index', posts: @result %>
+        <% end %>
+      <% else %>
+        <h3>検索結果がありませんでした。条件を変更して再度検索してください。</h3>
+      <% end %>
+    </div>
+  </div>
+</div>

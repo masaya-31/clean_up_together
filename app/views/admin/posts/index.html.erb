@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="d-flex">
+    		<% if params[:tag_id] %>
+    			<h2><%= @tag.name %>の記事一覧 (全<%= @all_posts_count %>件)</h2>
+    		<% elsif @keyword %>
+    			<h2><%= @keyword %>の記事一覧 (全<%= @all_posts_count %>件)</h2>
+    		<% else %>
+    			<h2>記事一覧 (全<%= @all_posts_count %>件)</h2>
+    		<% end %>
+
+      </div>
+      <%= render "admin/posts/index", posts: @posts %>
+    </div>
+    <div class="col-4">
+      <h2>タグ一覧</h2>
+
+    </div>
+  </div>
+</div>
