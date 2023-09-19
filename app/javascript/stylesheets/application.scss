@@ -1,1 +1,15 @@
-@import '~bootstrap/scss/bootstrap';
+@use '~bootstrap/scss/bootstrap';
+
+body {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #ccc;
+}
