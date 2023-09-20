@@ -1,9 +1,9 @@
 class Public::HomesController < ApplicationController
-  
+
   def top
-    @posts = Post.all.order(created_at: :desc).limit(6)
+    @posts = Post.all.order(created_at: :desc).limit(6).published
     # いいね数順に並べ替え
-    @favorited_posts = Post.includes(:favorited_members).limit(6).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
+    @favorited_posts = Post.includes(:favorited_members).limit(6).published.sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     @tags = Tag.all
   end
 
