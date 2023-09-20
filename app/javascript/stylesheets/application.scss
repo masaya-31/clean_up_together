@@ -13,3 +13,10 @@ footer {
   bottom: 0;
   background-color: #ccc;
 }
+
+
+@media (max-width: 768px) {
+  .top_header_bottom {
+    width: 100%;
+  }
+}
