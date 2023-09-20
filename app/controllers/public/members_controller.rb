@@ -1,6 +1,7 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_correct_member, except: [:show, :favorite, :unpublish]
+  before_action :ensure_normal_user, only: [:update, :email_update]
 
   def show
     @member = Member.find(params[:id])
@@ -69,4 +70,12 @@ class Public::MembersController < ApplicationController
       redirect_to member_path(current_member)
     end
   end
+
+  def ensure_normal_user
+    member = Member.find(params[:id])
+    if member.email == 'guest@example.com'
+      redirect_to edit_member_path(member), notice: 'ゲストユーザーの情報は編集できません。'
+    end
+  end
+
 end
