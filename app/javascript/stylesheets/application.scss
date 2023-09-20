@@ -14,8 +14,13 @@ footer {
   background-color: #ccc;
 }
 
+.top_post {
+  width: 180px;
+  height: 160px;
+}
 
-@media (max-width: 992px) {
+
+@media (max-width: 768px) {
   .top_header_bottom {
     width: 100%;
   }

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-9">
+    <div class="col-md-9">
       <div>
         <h2>おすすめ記事</h2>
         <%= render 'public/posts/top', posts: @favorited_posts %>
@@ -10,7 +10,7 @@
         <%= render 'public/posts/top', posts: @posts %>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
       <h2>タグ一覧</h2>
       <%= render 'public/posts/tag', tags: @tags %>
     </div>
