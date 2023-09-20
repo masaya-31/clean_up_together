@@ -1,18 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9">
-      <div>
-        <h2>おすすめ記事</h2>
-        <%= render 'public/posts/top', posts: @favorited_posts %>
+    <div class="col-xl-8 col-lg-9">
+      <div class="mb-2">
+        <div class="bg-white p-2 rounded">
+          <h2>おすすめ記事</h2>
+          <%= render 'public/posts/top', posts: @favorited_posts %>
+        </div>
       </div>
-      <div>
-        <h2>新着記事</h2>
-        <%= render 'public/posts/top', posts: @posts %>
+      <div class="mb-2">
+        <div class="bg-white p-2 rounded">
+          <h2>新着記事</h2>
+          <%= render 'public/posts/top', posts: @posts %>
+        </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <h2>タグ一覧</h2>
-      <%= render 'public/posts/tag', tags: @tags %>
+    <div class="col-xl-4 col-lg-3">
+      <div class="bg-white pt-2 pb-5 px-2 rounded">
+        <h2>タグ一覧</h2>
+        <%= render 'public/posts/tag', tags: @tags %>
+      </div>
     </div>
   </div>
 </div>

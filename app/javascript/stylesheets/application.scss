@@ -5,6 +5,11 @@ body {
   position: relative;
   padding-bottom: 100px;
   box-sizing: border-box;
+  background-color: #EEEEEE;
+}
+
+header {
+  background-color: white;
 }
 
 footer {
@@ -20,7 +25,7 @@ footer {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .top_header_bottom {
     width: 100%;
   }

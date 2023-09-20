@@ -1,7 +1,7 @@
 <div class="sidebar">
   <% tags.each do |tag| %>
     <% unless tag.posts.count == 0 %>
-      <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light mx-1" %>
+      <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
     <% end %>
   <% end %>
 </div>
