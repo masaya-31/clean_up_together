@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-md-8 bg-white mb-3 rounded">
       <div class="d-flex">
     		<% if params[:tag_id] %>
     			<h2><%= @tag.name %>の記事一覧 (全<%= @all_posts_count %>件)</h2>
@@ -16,11 +16,15 @@
           </div>
         <% end %>
       </div>
-      <%= render "index", posts: @posts %>
+      <div>
+        <%= render "index", posts: @posts %>
+      </div>
     </div>
-    <div class="col-4">
-      <h2>タグ一覧</h2>
-      <%= render 'public/posts/tag', tags: @tags %>
+    <div class="col-md-4">
+      <div class="bg-white pt-2 pb-5 px-2 rounded">
+        <h2>タグ一覧</h2>
+        <%= render 'public/posts/tag', tags: @tags %>
+      </div>
     </div>
   </div>
 </div>

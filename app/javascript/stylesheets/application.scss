@@ -24,9 +24,16 @@ footer {
   height: 160px;
 }
 
+.index_post_image {
+  width: 150px;
+  height: 130px;
+}
 
 @media (max-width: 992px) {
   .top_header_bottom {
     width: 100%;
   }
+}
+
+@media (max-width: 576px) {
 }

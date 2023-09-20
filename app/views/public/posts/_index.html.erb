@@ -1,8 +1,8 @@
 <% posts.each do |post| %>
-  <div class="d-flex m-3">
-    <div class="mx-3">
+  <div class="d-flex p-2 m-2 rounded shadow">
+    <div class="mx-3 index_post_image">
       <%= link_to post_path(post) do %>
-        <%= image_tag post.get_after_image(100,150) %>
+        <%= image_tag post.get_after_image(130,100) %>
       <% end %>
     </div>
     <div>
