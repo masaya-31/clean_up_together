@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-lg-6">
+    <div class="col-lg-6 bg-white py-3 rounded">
       <%= form_with(model:@member, url:member_path, method: :patch) do |f| %>
         <div class="form-group">
           <strong><%= f.label "プロフィール情報編集" %></strong>
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="row justify-content-center pt-5">
-    <div class="col-lg-6">
+    <div class="col-lg-6 bg-white py-3 rounded">
       <table class="table table-borderless">
         <tr>
           <th>ログイン情報編集</th>
