@@ -1,20 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="mb-3">
-        <%= link_to "予定追加", new_event_path, class: "btn btn-primary" %>
-      </div>
-      <div>
-        <%= month_calendar events: @events do |date, events| %>
-          <%= date.day %>
-          <% events.each do |event| %>
-            <div><%= event.title %></div>
+      <div class="bg-white p-3 rounded mb-3">
+        <div class="mb-3">
+          <%= link_to "予定追加", new_event_path, class: "btn btn-primary" %>
+        </div>
+        <div>
+          <%= month_calendar events: @events do |date, events| %>
+            <%= date.day %>
+            <% events.each do |event| %>
+              <div><%= event.title %></div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-      <div>
+      <div class="bg-white p-3 rounded">
       	<div class="schedule">今後の予定一覧（直近1ヶ月）</div>
-        <table class="table">
+        <table class="table ">
           <thead class="thead-light">
             <tr>
               <th>タイトル</th>
