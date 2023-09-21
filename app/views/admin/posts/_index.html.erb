@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <div class="d-flex m-3">
+  <div class="d-flex m-2 p-2 rounded shadow">
     <div class="mx-3">
       <%= link_to admin_post_path(post) do %>
         <%= image_tag post.get_after_image(100,150) %>

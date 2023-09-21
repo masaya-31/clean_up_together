@@ -1,25 +1,25 @@
 <div class="container">
-  <div class="row">
+  <div class="row bg-white py-3 rounded">
     <div class="col">
       <h2>コメント一覧</h2>
       <% @comments.each do |comment| %>
-        <table class="mb-3 bg-light">
+        <table class="mb-3 shadow">
           <tbody>
             <tr>
-              <td>
+              <td class="pt-3 pl-3">
                 投稿記事：<%= link_to admin_post_path(comment.post), class: "ml-3" do %>
                   <%= comment.post.title %>
                 <% end %>
               </td>
             </tr>
             <tr>
-              <td>
+              <td class="px-3">
                 ユーザー名：<%= comment.member.name %>
                 <%= link_to "削除", admin_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
               </td>
             </tr>
             <tr>
-              <td>コメント：<%= comment.comment %></td>
+              <td class="pb-3 pl-3">コメント：<%= comment.comment %></td>
             </tr>
           </tbody>
         </table>
