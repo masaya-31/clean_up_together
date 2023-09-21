@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="bg-white p-3 rounded">
-      	<div class="schedule">今後の予定一覧（直近1ヶ月）</div>
-        <table class="table ">
+      	<div class="schedule">今後の予定一覧</div>
+        <table class="table">
           <thead class="thead-light">
             <tr>
               <th>タイトル</th>
@@ -28,7 +28,7 @@
           </thead>
 
           <tbody>
-            <% @events.each do |event| %>
+            <% @event_lists.each do |event| %>
               <tr>
                 <td><%= event.title %></td>
                 <td><%= event.start_time.strftime("%m-%d") %></td>

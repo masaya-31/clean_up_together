@@ -4,6 +4,7 @@ class Public::EventsController < ApplicationController
 
   def index
     @events = current_member.events
+    @event_lists = current_member.events.where("start_time >= ?", Date.today).order(start_time: :asc)
   end
 
   def new
