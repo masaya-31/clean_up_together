@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 mb-3">
+      <%= render 'public/members/edit_sidebar', member: @member %>
+    </div>
+    <div class="col-lg-6">
+      <div class="bg-white p-3 rounded">
+        <table class="table table-borderless">
+          <tr>
+            <th>ログイン情報編集</th>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+          </tr>
+          <tr>
+            <td><%= @member.email %></td>
+            <td><%= link_to "変更", email_edit_members_path %></td>
+          </tr>
+          <!--<tr>-->
+          <!--  <td>パスワード</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>＊＊＊＊＊＊＊＊</td>-->
+          <!--  <td>< link_to "変更", password_edit_member_path ></td>-->
+          <!--</tr>-->
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

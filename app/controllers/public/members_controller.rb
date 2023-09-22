@@ -1,6 +1,5 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
-  before_action :ensure_correct_member, except: [:show, :favorite, :unpublish]
   before_action :ensure_normal_user, only: [:update, :email_update]
 
   def show
@@ -34,6 +33,10 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def login_edit
+    @member = current_member
+  end
+
   def email_edit
     @member = current_member
   end
@@ -41,7 +44,7 @@ class Public::MembersController < ApplicationController
   def email_update
     @member = current_member
     if @member.update(member_email_params)
-      redirect_to edit_member_path(@member)
+      redirect_to login_edit_members_path
     else
       render :email_edit
     end
@@ -64,16 +67,8 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:email)
   end
 
-  def ensure_correct_member
-    member = Member.find(params[:id])
-    unless member.id == current_member.id
-      redirect_to member_path(current_member)
-    end
-  end
-
   def ensure_normal_user
-    member = Member.find(params[:id])
-    if member.email == 'guest@example.com'
+    if current_member.email == 'guest@example.com'
       redirect_to edit_member_path(member), notice: 'ゲストユーザーの情報は編集できません。'
     end
   end

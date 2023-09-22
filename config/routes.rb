@@ -33,14 +33,17 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about"
     resources :events, only: [:new, :index, :create, :edit, :update, :destroy]
-    resources :members, only: [:show, :edit, :update] do
+    resources :members, only: [:show] do
       resource :relationships, only: [:create, :destroy]
       get "following" => "relationships#following", as: "following"
       get "favorite"
       get "unpublish", on: :collection
-      member do
+      collection do
+        get 'edit_information' => 'members#edit'
+        get 'login_edit'
         get 'email_edit'
         get 'password_edit'
+        patch 'update'
         patch 'email_update'
         patch 'password_update'
       end

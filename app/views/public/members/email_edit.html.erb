@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 bg-white py-3 rounded">
       <h6 class="mb-3"><strong>ログイン情報編集</strong></h6>
-      <%= form_with(model:@member, url:email_update_member_path, method: :patch) do |f| %>
+      <%= form_with(model:@member, url:email_update_members_path, method: :patch) do |f| %>
         <div class="form-group">
           <%= f.label "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, class: "form-control" %>
