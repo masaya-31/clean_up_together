@@ -50,13 +50,6 @@ class Public::MembersController < ApplicationController
     end
   end
 
-  # def password_edit
-  # end
-
-  # def password_update
-
-  # end
-
   private
 
   def member_profile_params

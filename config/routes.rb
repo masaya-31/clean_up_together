@@ -42,10 +42,8 @@ Rails.application.routes.draw do
         get 'edit_information' => 'members#edit'
         get 'login_edit'
         get 'email_edit'
-        get 'password_edit'
         patch 'update'
         patch 'email_update'
-        patch 'password_update'
       end
     end
     resources :posts do

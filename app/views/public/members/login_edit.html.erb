@@ -5,10 +5,8 @@
     </div>
     <div class="col-lg-6">
       <div class="bg-white p-3 rounded">
+        <h5 class="mb-3"><strong>ログイン情報編集</strong></h5>
         <table class="table table-borderless">
-          <tr>
-            <th>ログイン情報編集</th>
-          </tr>
           <tr>
             <td>メールアドレス</td>
           </tr>
@@ -16,13 +14,13 @@
             <td><%= @member.email %></td>
             <td><%= link_to "変更", email_edit_members_path %></td>
           </tr>
-          <!--<tr>-->
-          <!--  <td>パスワード</td>-->
-          <!--</tr>-->
-          <!--<tr>-->
-          <!--  <td>＊＊＊＊＊＊＊＊</td>-->
-          <!--  <td>< link_to "変更", password_edit_member_path ></td>-->
-          <!--</tr>-->
+          <tr>
+            <td>パスワード</td>
+          </tr>
+          <tr>
+            <td>＊＊＊＊＊＊＊＊</td>
+            <td><%= link_to "変更", edit_member_registration_path %></td>
+          </tr>
         </table>
       </div>
     </div>
