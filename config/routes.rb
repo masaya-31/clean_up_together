@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
-    resources :events, only: [:new, :index, :create, :edit, :update, :destroy]
+    resources :events, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :members, only: [:show] do
       resource :relationships, only: [:create, :destroy]
       get "following" => "relationships#following", as: "following"

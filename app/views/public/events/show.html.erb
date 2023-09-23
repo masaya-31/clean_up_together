@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 bg-white py-3 rounded">
+      <div class="form-group">
+        <h2 class="mb-4"><%= @event.title %></h2>
+        <div class="mb-4">
+          <h4>作業日：<%= @event.start_time %></h4>
+        </div>
+        <div class="mb-4">
+          <h4>参考記事：
+            <% if @event.post_id == -1 %>
+              参考記事なし
+            <% else %>
+                <%= link_to post_path(@event.post_id) do %>
+                  <%= @event.post.title %>
+                <% end %>
+            <% end %>
+          </h4>
+        </div>
+        <div class="mb-4">
+          <%= link_to "編集", edit_event_path(@event),  class: "btn btn-success mr-4" %>
+          <%= link_to "削除", event_path(@event), method: :delete,  class: "btn btn-danger" %>
+        </div>
+        <div>
+          <%= link_to "カレンダーに戻る", events_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

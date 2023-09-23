@@ -9,7 +9,11 @@
           <%= month_calendar events: @events do |date, events| %>
             <%= date.day %>
             <% events.each do |event| %>
-              <div><%= event.title %></div>
+              <div>
+                <%= link_to event_path(event) do %>
+                  <%= event.title %>
+                <% end %>
+              </div>
             <% end %>
           <% end %>
         </div>
@@ -33,8 +37,7 @@
                 <td><%= event.title %></td>
                 <td><%= event.start_time.strftime("%m-%d") %></td>
                 <td>
-                  <% if event.post_id == -1 %>
-                  <% else %>
+                  <% unless event.post_id == -1 %>
                     <%= link_to post_path(event.post_id) do %>
                       <%= event.post.title %>
                     <% end %>
