@@ -7,7 +7,7 @@
           <div class="col d-flex">
             <% @tags.each do |tag| %>
               <% unless tag.posts.count == 0 %>
-                  <h4><%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light mx-1 p-2" %></h4>
+                  <h4><%= link_to tag.name, admin_posts_path(tag_id: tag.id), class: "bg-light mx-1 p-2" %></h4>
                   <p class="mr-3"><%= link_to '削除', admin_tag_path(tag), method: :delete, class: "btn-sm btn-danger" %></p>
               <% end %>
             <% end %>

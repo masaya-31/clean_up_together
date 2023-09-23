@@ -13,9 +13,11 @@
       </div>
       <%= render "admin/posts/index", posts: @posts %>
     </div>
-    <div class="col-4">
-      <h2>タグ一覧</h2>
-
+    <div class="col-md-4">
+      <div class="bg-white pt-2 pb-5 px-2 rounded">
+        <h2>タグ一覧</h2>
+        <%= render 'admin/posts/tag', tags: @tags %>
+      </div>
     </div>
   </div>
 </div>
