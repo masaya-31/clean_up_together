@@ -11,7 +11,9 @@
               <th>表示名</th>
               <th>投稿数</th>
               <th>フォロー数</th>
-              <th colspan="4"></th>
+              <% if current_member == @member %>
+                <th></th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
