@@ -15,8 +15,9 @@
           <% end %>
         </div>
         <div>
-          <%= render "public/posts/index", posts: @unpublish_posts %>
+          <%= render "public/posts/index", posts: @posts %>
         </div>
+        <%= paginate @posts %>
       </div>
     </div>
   </div>

@@ -20,12 +20,12 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :edit, :update] do
       member do
         get 'posts'
-        get 'comments'
+        get 'post_comments'
       end
     end
     resources :posts, only: [:index, :show, :destroy]
     resources :tags, only: [:index, :destroy]
-    resources :comments, only: [:index, :destroy]
+    resources :post_comments, only: [:index, :destroy]
   end
 
   #会員側

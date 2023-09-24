@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row bg-white py-3 rounded">
+    <div class="col">
+      <h2>コメント一覧</h2>
+      <%= render 'admin/post_comments/index', comments: @comments %>
+      <%= paginate @comments %>
+    </div>
+  </div>
+</div>

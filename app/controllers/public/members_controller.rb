@@ -4,20 +4,17 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
-    @posts = @member.posts.published
-  end
-
-  def favorite
-    @member = Member.find(params[:member_id])
-    @favorites = Favorite.where(member_id: @member.id).pluck(:post_id)
-    @favorite_posts = Post.find(@favorites)
+    @posts = @member.posts.published.page(params[:page])
   end
 
   def unpublish
     @member = current_member
-    @unpublish_posts = @member.posts.unpublished
+    @posts = @member.posts.unpublished.page(params[:page])
+  end
+
+  def favorite
+    @member = Member.find(params[:member_id])
+    @posts = @member.favorited_posts.includes(:member).published.page(params[:page])
   end
 
   def edit

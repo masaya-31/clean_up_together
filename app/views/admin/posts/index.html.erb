@@ -3,15 +3,13 @@
     <div class="col-md-8 bg-white mb-3 rounded py-3">
       <div class="d-flex">
     		<% if params[:tag_id] %>
-    			<h2><%= @tag.name %>の記事一覧 (全<%= @all_posts_count %>件)</h2>
-    		<% elsif @keyword %>
-    			<h2><%= @keyword %>の記事一覧 (全<%= @all_posts_count %>件)</h2>
+    			<h2><%= @tag.name %>のタグ　記事一覧</h2>
     		<% else %>
-    			<h2>記事一覧 (全<%= @all_posts_count %>件)</h2>
+    			<h2>記事一覧</h2>
     		<% end %>
-
       </div>
       <%= render "admin/posts/index", posts: @posts %>
+      <%= paginate @posts %>
     </div>
     <div class="col-md-4">
       <%= render 'admin/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>

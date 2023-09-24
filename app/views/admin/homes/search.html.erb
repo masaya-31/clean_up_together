@@ -1,16 +1,28 @@
 <div class="container">
-  <div class="row justify-content-center bg-white py-3 rounded">
-    <div class="col-10">
-      <h2>検索結果</h2>
-      <% if @result.exists? %>
-        <% if @model == 'member' %>
+  <% if @result.exists? %>
+    <% if @model == 'member' %>
+      <div class="row justify-content-center">
+        <div class="col-10 bg-white py-3 rounded">
+          <h2>検索結果</h2>
           <%= render 'admin/members/index', members: @result %>
-        <% else %>
-          <%= render 'admin/posts/index', posts: @result %>
-        <% end %>
-      <% else %>
-        <h3>検索結果がありませんでした。条件を変更して再度検索してください。</h3>
-      <% end %>
-    </div>
-  </div>
+          <%= paginate @result %>
+        </div>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-md-8 bg-white mb-3 rounded py-3">
+          <div class="d-flex">
+      			<h2>検索結果</h2>
+          </div>
+          <%= render "admin/posts/index", posts: @result %>
+          <%= paginate @result %>
+        </div>
+        <div class="col-md-4">
+          <%= render 'admin/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+      <h3>検索結果がありませんでした。条件を変更して再度検索してください。</h3>
+  <% end %>
 </div>

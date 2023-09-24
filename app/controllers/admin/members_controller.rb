@@ -1,8 +1,8 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
-    @members = Member.all
+    @members = Member.page(params[:page])
   end
 
   def edit
@@ -17,12 +17,14 @@ class Admin::MembersController < ApplicationController
 
   def posts
     @member = Member.find(params[:id])
-    @posts = @member.posts
+    @posts = @member.posts.page(params[:page])
+    @tags = Tag.all.limit(30)
+    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
   end
 
-  def comments
+  def post_comments
     @member = Member.find(params[:id])
-    @comments = @member.post_comments
+    @comments = @member.post_comments.page(params[:page])
   end
 
   private

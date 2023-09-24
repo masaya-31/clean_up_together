@@ -5,19 +5,17 @@ class Public::PostsController < ApplicationController
   def index
     # キーワード検索の時
     if params[:keyword].present?
-      @posts = Post.search(params[:keyword]).published
+      @posts = Post.search(params[:keyword]).published.page(params[:page])
     # タグ検索の時
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
-      @posts = @tag.posts.order(created_at: :desc).published
+      @posts = @tag.posts.order(created_at: :desc).published.page(params[:page])
     # 全ての投稿一覧
     else
-      @posts = Post.all.order(created_at: :desc).published
+      @posts = Post.all.published.page(params[:page])
     end
     @tags = Tag.all.limit(30)
     @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    # 投稿件数
-    @all_posts_count = @posts.count
     @keyword = params[:keyword]
   end
 
