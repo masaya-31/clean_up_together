@@ -1,7 +1,22 @@
 <div class="sidebar">
-  <% tags.each do |tag| %>
-    <% unless tag.posts.count == 0 %>
-      <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
-    <% end %>
-  <% end %>
+  <div class="bg-white pt-2 pb-5 px-2 rounded">
+    <div class="mb-3">
+      <h2>おすすめタグ</h2>
+      <% favorited_tags.each do |tag| %>
+        <% unless tag.posts.count == 0 %>
+          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+        <% end %>
+      <% end %>
+
+    </div>
+    <div>
+      <h2>タグ一覧</h2>
+      <% tags.each do |tag| %>
+        <% unless tag.posts.count == 0 %>
+          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+        <% end %>
+      <% end %>
+      <p><%= link_to "タグ一覧へ>>", tag_path %></p>
+    </div>
+  </div>
 </div>

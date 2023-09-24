@@ -21,10 +21,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="bg-white pt-2 pb-5 px-2 rounded">
-        <h2>タグ一覧</h2>
-        <%= render 'public/posts/tag', tags: @tags %>
-      </div>
+      <%= render 'public/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
     </div>
   </div>
 </div>

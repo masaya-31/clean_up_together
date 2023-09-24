@@ -14,7 +14,8 @@ class Public::PostsController < ApplicationController
     else
       @posts = Post.all.order(created_at: :desc).published
     end
-    @tags = Tag.all
+    @tags = Tag.all.limit(30)
+    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
     # 投稿件数
     @all_posts_count = @posts.count
     @keyword = params[:keyword]

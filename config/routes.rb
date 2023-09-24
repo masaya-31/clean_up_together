@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    get "tag" => "tags#index"
     resources :events, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :members, only: [:show] do
       resource :relationships, only: [:create, :destroy]

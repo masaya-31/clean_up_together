@@ -14,6 +14,7 @@ class Admin::PostsController < ApplicationController
       @posts = Post.all.order(created_at: :desc).published
     end
     @tags = Tag.all
+    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
     # 投稿件数
     @all_posts_count = @posts.count
     @keyword = params[:keyword]
