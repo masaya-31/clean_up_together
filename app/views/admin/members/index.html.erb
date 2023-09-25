@@ -3,7 +3,9 @@
     <div class="col-10 bg-white py-3 rounded">
       <h2>会員一覧</h2>
       <%= render 'admin/members/index', members: @members %>
-      <%= paginate @members %>
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @members, theme: 'bootstrap-5'%>
+      </div>
     </div>
   </div>
 </div>

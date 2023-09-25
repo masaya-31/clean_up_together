@@ -3,7 +3,9 @@
     <div class="col">
       <h2>コメント一覧</h2>
       <%= render 'admin/post_comments/index', comments: @comments %>
-      <%= paginate @comments %>
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @comments,theme: 'bootstrap-5' %>
+      </div>
     </div>
   </div>
 </div>

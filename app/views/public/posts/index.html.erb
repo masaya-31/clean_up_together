@@ -19,7 +19,9 @@
       <div>
         <%= render "index", posts: @posts %>
       </div>
-      <%= paginate @posts %>
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @posts, theme: 'bootstrap-5' %>
+      </div>
     </div>
     <div class="col-md-4">
       <%= render 'public/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>

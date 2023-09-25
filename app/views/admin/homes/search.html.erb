@@ -5,7 +5,9 @@
         <div class="col-10 bg-white py-3 rounded">
           <h2>検索結果</h2>
           <%= render 'admin/members/index', members: @result %>
-          <%= paginate @result %>
+          <div class="d-flex justify-content-center mt-4">
+            <%= paginate @result, theme: 'bootstrap-5' %>
+          </div>
         </div>
       </div>
     <% else %>
@@ -15,7 +17,9 @@
       			<h2>検索結果</h2>
           </div>
           <%= render "admin/posts/index", posts: @result %>
-          <%= paginate @result %>
+          <div class="d-flex justify-content-center mt-4">
+            <%= paginate @result, theme: 'bootstrap-5' %>
+          </div>
         </div>
         <div class="col-md-4">
           <%= render 'admin/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>

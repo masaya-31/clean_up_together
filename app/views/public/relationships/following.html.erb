@@ -43,7 +43,9 @@
           </tbody>
         </table>
       <% end %>
-      <%= paginate @members %>
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @members, theme: 'bootstrap-5'%>
+      </div>
     </div>
   </div>
 </div>
