@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-8 bg-white py-3 rounded">
+      <%= render "public/shared/error_messages", resource: @event %>
       <%= form_with(model: @event, url:event_path, method: :patch, local: true) do |f| %>
         <div>
           <h3><%= f.label "タイトル" %></h3>

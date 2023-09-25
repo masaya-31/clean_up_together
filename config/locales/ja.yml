@@ -16,6 +16,13 @@ ja:
         my_post: "自分の投稿"
         favorite_post: "お気に入り投稿"
   activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        title: タイトル
+        start_time: 作業日
+        post_id: 記事
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

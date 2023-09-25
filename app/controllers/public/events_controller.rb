@@ -32,7 +32,8 @@ class Public::EventsController < ApplicationController
 
     @event.member_id = current_member.id
     if @event.save
-      redirect_to events_path
+      flash[:color] = "text-success"
+      redirect_to events_path, notice: 'イベントを作成しました'
     else
       favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
       @favorite_posts = Post.find(favorites)
@@ -60,7 +61,8 @@ class Public::EventsController < ApplicationController
 
     @event.member_id = current_member.id
     if @event.update(event_params)
-      redirect_to events_path
+      flash[:color] = "text-success"
+      redirect_to events_path, notice: 'イベントを編集しました'
     else
       favorites = Favorite.where(member_id: current_member.id).pluck(:post_id)
       @favorite_posts = Post.find(favorites)
@@ -70,8 +72,12 @@ class Public::EventsController < ApplicationController
 
   def destroy
     event = Event.find(params[:id])
-    event.destroy
-    redirect_to events_path
+    if event.destroy
+      flash[:color] = "text-danger"
+      redirect_to events_path, notice: "イベントを削除しました"
+    else
+      redirect_to events_path, notice: "イベントの削除に失敗しました"
+    end
   end
 
   private
