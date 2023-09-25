@@ -59,7 +59,8 @@ class Public::MembersController < ApplicationController
 
   def ensure_normal_user
     if current_member.email == 'guest@example.com'
-      redirect_to edit_member_path(member), notice: 'ゲストユーザーの情報は編集できません。'
+      flash[:color] = "text-danger"
+      redirect_to member_path(current_member), notice: 'ゲストユーザーの情報は編集できません。'
     end
   end
 

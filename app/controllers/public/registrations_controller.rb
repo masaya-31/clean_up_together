@@ -2,6 +2,7 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  before_action :ensure_normal_user, only: [:update]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -57,6 +58,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     login_edit_members_path
+  end
+
+  def ensure_normal_user
+    if current_member.email == 'guest@example.com'
+      flash[:color] = "text-danger"
+      redirect_to member_path(current_member), notice: 'ゲストユーザーの情報は編集できません。'
+    end
   end
 
   # The path used after sign up for inactive accounts.
