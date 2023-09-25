@@ -1,11 +1,11 @@
-<% post.post_comments.each do |post_comment| %>
+<% post_comments.each do |post_comment| %>
   <table class="mb-3">
     <tbody>
       <tr>
         <td>
           ユーザー名：<%= post_comment.member.name %>
           <% if post_comment.member == current_member %>
-            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
           <% end %>
         </td>
       </tr>
@@ -15,3 +15,4 @@
     </tbody>
   </table>
 <% end %>
+<%= paginate post_comments %>

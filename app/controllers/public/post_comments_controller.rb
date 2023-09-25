@@ -7,11 +7,13 @@ class Public::PostCommentsController < ApplicationController
     @comment = current_member.post_comments.new(post_comment_params)
     @comment.post_id = post.id
     @comment.save
+    redirect_to request.referer
   end
   # コメント削除機能
   def destroy
     @comment = PostComment.find(params[:id])
     @comment.destroy
+    redirect_to request.referer
   end
 
   private
