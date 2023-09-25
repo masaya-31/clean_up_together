@@ -1,5 +1,5 @@
 <div class="container">
-  <span class="bg-white rounded text-success", style="font-size : larger"><%= flash[:notice] %></span>
+  <span class="bg-white rounded <%= flash[:color] %>", style="font-size : larger"><%= flash[:notice] %></span>
   <div class="row">
     <div class="col-3">
       <%= render 'public/members/sidebar', member: @member %>

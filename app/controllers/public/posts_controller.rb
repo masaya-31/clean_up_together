@@ -35,7 +35,8 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:name].split("、")
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to member_path(current_member)
+      flash[:color] = "text-success"
+      redirect_to member_path(current_member), notice: "記事を作成しました"
     else
       render :new
     end
@@ -51,7 +52,8 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:name].split('、')
     if @post.update(post_params)
       @post.save_tag(tag_list)
-      redirect_to post_path(@post)
+      flash[:color] = "text-success"
+      redirect_to post_path(@post), notice: "記事を編集しました"
     else
       render :edit
     end
@@ -59,8 +61,12 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to member_path(current_member)
+    if @post.destroy
+      flash[:color] = "text-danger"
+      redirect_to member_path(current_member), notice: "記事を削除しました"
+    else
+      redirect_to member_path(current_member), notice: "記事の削除に失敗しました"
+    end
   end
 
   private

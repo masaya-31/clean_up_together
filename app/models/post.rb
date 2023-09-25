@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   has_one_attached :after_image
 
   validates :after_image, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 30 }
   validates :body, presence: true
 
   scope :published, -> {where(is_publish: true)}

@@ -18,11 +18,16 @@ ja:
   activerecord:
     models:
       event: イベント
+      post: 記事
     attributes:
       event:
         title: タイトル
         start_time: 作業日
         post_id: 記事
+      post:
+        title: タイトル
+        body: 掃除方法
+        after_image: 作業後画像
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
