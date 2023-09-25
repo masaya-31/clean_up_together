@@ -19,7 +19,8 @@ class Member < ApplicationRecord
   # 被フォロー関係を通じて参照→自分をフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 1..15 }
+  validates :introduction, length: { maximum: 100 }
 
   # フォローするとき
   def follow(member)

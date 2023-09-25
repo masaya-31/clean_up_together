@@ -6,6 +6,7 @@
     <div class="col-lg-6">
       <div class="bg-white p-3 rounded">
         <h5 class="mb-4"><strong>ログイン情報編集</strong></h5>
+        <%= render "public/shared/error_messages", resource: @member %>
         <%= form_with(model:@member, url:email_update_members_path, method: :patch) do |f| %>
           <div class="form-group">
             <%= f.label "メールアドレス" %>

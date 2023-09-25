@@ -24,7 +24,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_profile_params)
-      redirect_back(fallback_location: root_path)
+      redirect_to request.referer, notice: 'プロフィール情報を変更しました'
     else
       render :edit
     end
@@ -41,7 +41,7 @@ class Public::MembersController < ApplicationController
   def email_update
     @member = current_member
     if @member.update(member_email_params)
-      redirect_to login_edit_members_path
+      redirect_to login_edit_members_path, notice: 'アカウント情報を変更しました'
     else
       render :email_edit
     end

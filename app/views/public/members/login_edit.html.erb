@@ -1,4 +1,5 @@
 <div class="container">
+  <span class="bg-white rounded text-success", style="font-size : larger"><%= flash[:notice] %></span>
   <div class="row">
     <div class="col-lg-3 mb-3">
       <%= render 'public/members/edit_sidebar', member: @member %>
@@ -12,14 +13,14 @@
           </tr>
           <tr>
             <td><%= @member.email %></td>
-            <td><%= link_to "変更", email_edit_members_path %></td>
+            <td><%= link_to "変更", email_edit_members_path, class: "btn btn-primary" %></td>
           </tr>
           <tr>
             <td>パスワード</td>
           </tr>
           <tr>
             <td>＊＊＊＊＊＊＊＊</td>
-            <td><%= link_to "変更", edit_member_registration_path %></td>
+            <td><%= link_to "変更", edit_member_registration_path, class: "btn btn-primary" %></td>
           </tr>
         </table>
       </div>

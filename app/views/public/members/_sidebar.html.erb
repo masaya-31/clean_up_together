@@ -11,14 +11,14 @@
     <% end %>
     <div class="mt-5">
       <% if member == current_member %>
-        <p><%= link_to "プロフィール編集へ", edit_information_members_path %></p>
-        <p><%= link_to "カレンダーへ", events_path %></p>
+        <p><%= link_to "プロフィール編集へ", edit_information_members_path, class: "text-dark" %></p>
+        <p><%= link_to "カレンダーへ", events_path, class: "text-dark" %></p>
       <% else %>
         <div class="my-3">
           <%= render 'public/relationships/form', member: member %>
         </div>
       <% end %>
-      <p><%= link_to "フォロー会員一覧へ", member_following_path(member) %></p>
+      <p><%= link_to "フォロー会員一覧へ", member_following_path(member), class: "text-dark" %></p>
     </div>
   </div>
 </div>
