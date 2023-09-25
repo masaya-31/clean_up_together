@@ -49,4 +49,33 @@
       </div>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <!--コメント一覧表示-->
+      <div class="d-flex mb-3">
+        <h5>コメント一覧</h5>
+        <span class="ml-5 post-comments-counter">
+          <%= render 'public/post_comments/counter', post: @post %>
+        </span>
+      </div>
+      <div class="post-comments-index">
+        <% @post_comments.each do |post_comment| %>
+          <table class="mb-3">
+            <tbody>
+              <tr>
+                <td>
+                  ユーザー名：<%= post_comment.member.name %>
+                  <%= link_to "削除", admin_post_comment_path(post_comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
+                </td>
+              </tr>
+              <tr>
+                <td><%= post_comment.comment %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+        <%= paginate @post_comments %>
+      </div>
+    </div>
+  </div>
 </div>
