@@ -10,6 +10,14 @@
         <%= link_to admin_post_path(post) do %>
           <%= post.title %>
         <% end %>
+        <span class="ml-3">
+          公開状態：
+          <% if post.is_publish == true %>
+            <span>公開</span>
+          <% else %>
+            <span>非公開</span>
+        　<% end %>
+        </span>
       </div>
       <div>
         <span class="ml-3">投稿者:</span>

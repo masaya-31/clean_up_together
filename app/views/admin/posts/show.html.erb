@@ -41,10 +41,18 @@
       <div class="my-5">
         <h5><strong>タグ</strong></h5>
         <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+          <%= link_to tag.name, admin_posts_path(tag_id: tag.id) %>
         <% end %>
       </div>
       <div class="text-right my-3">
+        <span class="mr-3">
+          公開状態：
+          <% if @post.is_publish == true %>
+            <span>公開</span>
+          <% else %>
+            <span>非公開</span>
+          <% end %>
+        </span>
         <%= link_to "削除する", admin_post_path, class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </div>
     </div>
