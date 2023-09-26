@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show]
   before_action :ensure_correct_member, only: [:edit, :update, :destroy]
+  before_action :select_published_post, only: [:show]
 
   def index
     # キーワード検索の時
@@ -80,6 +81,14 @@ class Public::PostsController < ApplicationController
     member = post.member
     unless member.id == current_member.id
       redirect_to member_path(current_member)
+    end
+  end
+
+  # 非公開記事の閲覧制限
+  def select_published_post
+    post = Post.find(params[:id])
+    if post.is_publish == false && post.member != current_member
+      redirect_to root_path
     end
   end
 end
