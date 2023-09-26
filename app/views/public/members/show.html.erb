@@ -1,10 +1,10 @@
 <div class="container">
   <span class="bg-white rounded <%= flash[:color] %>", style="font-size : larger"><%= flash[:notice] %></span>
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3 mb-3">
       <%= render 'public/members/sidebar', member: @member %>
     </div>
-    <div class="col-9">
+    <div class="col-md-9">
         <%= render 'public/members/transition', member: @member %>
       <div class="bg-white p-3 rounded">
         <div class="d-flex">
