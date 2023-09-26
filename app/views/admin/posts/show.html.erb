@@ -15,12 +15,14 @@
   </div>
   <div class="row justify-content-center mt-3">
     <% if @post.before_image.attached? %>
-      <div class="col-lg-8 d-flex justify-content-between">
-        <div>
+      <div class="col-sm-6 justify-content-between">
+        <div class="text-center">
           <%= image_tag @post.get_before_image(300,300) %>
           <h5><strong>作業前画像</strong></h5>
         </div>
-        <div>
+      </div>
+      <div class="col-sm-6 justify-content-center">
+        <div class="text-center">
           <%= image_tag @post.get_after_image(300,300) %>
           <h5><strong>作業後画像</strong></h5>
         </div>
@@ -34,11 +36,11 @@
   </div>
   <div class="row justify-content-center my-3">
     <div class="col-lg-10">
-      <div>
+      <div class="shadow p-3 rounded">
         <h5><strong>掃除方法</strong></h5>
         <%=safe_join(@post.body.split("\n"), tag(:br))%>
       </div>
-      <div class="my-5">
+      <div class="my-5 shadow p-3 rounded">
         <h5><strong>タグ</strong></h5>
         <% @post.tags.each do |tag| %>
           <%= link_to tag.name, admin_posts_path(tag_id: tag.id) %>
