@@ -57,14 +57,14 @@ ActiveRecord::Schema.define(version: 2023_09_11_131559) do
     t.integer "post_id"
     t.string "title", null: false
     t.date "start_time", null: false
-    t.integer "select_post"
+    t.integer "select_post", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "post_id"
+    t.integer "member_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 2023_09_11_131559) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "post_id"
-    t.string "comment"
+    t.integer "member_id", null: false
+    t.integer "post_id", null: false
+    t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_131559) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "member_id"
+    t.integer "member_id", null: false
     t.string "title", null: false
     t.text "body", null: false
     t.boolean "is_publish", default: true, null: false
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 2023_09_11_131559) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
