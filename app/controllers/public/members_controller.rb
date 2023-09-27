@@ -13,7 +13,7 @@ class Public::MembersController < ApplicationController
   end
 
   def favorite
-    @member = Member.find(params[:member_id])
+    @member = Member.find(params[:id])
     @posts = @member.favorited_posts.includes(:member).published.page(params[:page]).order(created_at: :desc)
   end
 

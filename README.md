@@ -30,7 +30,8 @@
 
 ## 設計書
 <!--テーマを設定・提出する時点では不要です-->
-​後ほど作成予定
+​ER図：https://app.diagrams.net/#G1LpgtJANmYWLgCGdYQDp7H67WA6K7R0ZF<br>
+ アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1-52u1DhTyC4SoKeOz1aDoCgmpYLCzsV0JrGYf4aFqW4/edit#gid=549108681<br>
 
 ## 開発環境
 - OS：Linux(CentOS)

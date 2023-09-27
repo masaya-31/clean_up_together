@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # ゲストログイン用
   devise_scope :member do
     post 'members/guest_sign_in', to: 'members/sessions#guest_sign_in'
   end
@@ -32,14 +33,14 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
-    get "tag" => "tags#index"
+    get "tags" => "tags#index"
     resources :events, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :members, only: [:show] do
       resource :relationships, only: [:create, :destroy]
       get "following" => "relationships#following", as: "following"
-      get "favorite"
-      get "unpublish", on: :collection
+      get "favorite", on: :member
       collection do
+        get "unpublish"
         get 'edit_information' => 'members#edit'
         get 'login_edit'
         get 'email_edit'
