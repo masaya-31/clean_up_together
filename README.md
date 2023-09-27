@@ -33,6 +33,9 @@
 ​ER図：https://app.diagrams.net/#G1LpgtJANmYWLgCGdYQDp7H67WA6K7R0ZF<br>
  テーブル定義書：https://docs.google.com/spreadsheets/d/1SWOrXRKoDejvJyCCJiwolxBo2VeThILl/edit#gid=1243549839<br>
  アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1-52u1DhTyC4SoKeOz1aDoCgmpYLCzsV0JrGYf4aFqW4/edit#gid=549108681<br>
+ ワイヤーフレーム（会員側）：https://app.diagrams.net/#G1wqg_JOqUGcfOpGeMzwf_OTHkcNuI4k56<br>
+ ワイヤーフレーム（管理者側）：https://app.diagrams.net/#G1ZbeYbS6giUX65uV_vXWWoa9lIxRlFr32<br>
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
