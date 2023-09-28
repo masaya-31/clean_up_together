@@ -35,7 +35,7 @@
  アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1-52u1DhTyC4SoKeOz1aDoCgmpYLCzsV0JrGYf4aFqW4/edit#gid=549108681<br>
  ワイヤーフレーム（会員側）：https://app.diagrams.net/#G1wqg_JOqUGcfOpGeMzwf_OTHkcNuI4k56<br>
  ワイヤーフレーム（管理者側）：https://app.diagrams.net/#G1ZbeYbS6giUX65uV_vXWWoa9lIxRlFr32<br>
- 機能一覧：https://docs.google.com/spreadsheets/d/1NER67J8y0CgvdmzoKashs4aSshIT8tCVxLb1galAopc/edit#gid=1754526488<br>
+ 機能一覧：https://docs.google.com/spreadsheets/d/1nfwqUol-cv9TZjW7DxD4UM9J5o1UXCtGpu1_ffb3uvU/edit#gid=885378170<br>
 
 ## 開発環境
 - OS：Linux(CentOS)
