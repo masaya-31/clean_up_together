@@ -4,15 +4,10 @@
       <%= render 'public/members/sidebar', member: @member %>
     </div>
     <div class="col-md-9">
-        <%= render 'public/members/transition', member: @member %>
+      <%= render 'public/members/transition', member: @member %>
       <div class="bg-white p-3 rounded">
         <div class="d-flex">
           <h2>お気に入り記事</h2>
-          <% if @member == current_member %>
-            <div class="ml-5">
-              <%= link_to "新規投稿", new_post_path, class: "btn btn-success" %>
-            </div>
-          <% end %>
         </div>
         <div>
           <%= render "public/posts/index", posts: @posts %>
