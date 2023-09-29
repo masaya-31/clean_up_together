@@ -1,0 +1,27 @@
+<div class="form-group">
+  <h2><%= post.title %></h2>
+  <div>
+    <span>
+      投稿者：
+      <% if admin_signed_in? %>
+        <%= link_to edit_admin_member_path(post.member) do %>
+          <%= post.member.name %>
+        <% end %>
+      <% else %>
+        <%= link_to member_path(post.member) do %>
+          <%= post.member.name %>
+        <% end %>
+      <% end %>
+    </span>
+    <span class="mx-3 post-favorites-counter">
+      <%= render 'public/favorites/counter', post: post %>
+    </span>
+    <% unless admin_signed_in? %>
+      <% if post.member != current_member && member_signed_in? %>
+        <span class=<%= "favorite-" + post.id.to_s %> >
+          <%= render 'public/favorites/favorite', post: post %>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+</div>

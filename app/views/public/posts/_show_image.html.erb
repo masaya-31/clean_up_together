@@ -1,0 +1,19 @@
+<% if post.before_image.attached? %>
+  <div class="col-sm-6 justify-content-center">
+    <div class="text-center">
+      <%= image_tag post.get_before_image(250,300) %>
+      <h5><strong>作業前画像</strong></h5>
+    </div>
+  </div>
+  <div class="col-sm-6 justify-content-center">
+    <div class="text-center">
+      <%= image_tag post.get_after_image(250,300) %>
+      <h5><strong>作業後画像</strong></h5>
+    </div>
+  </div>
+<% else %>
+  <div>
+    <%= image_tag post.get_after_image(250,300) %>
+    <h5><strong>作業後画像</strong></h5>
+  </div>
+<% end %>

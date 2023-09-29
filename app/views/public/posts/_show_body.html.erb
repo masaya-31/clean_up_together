@@ -1,0 +1,30 @@
+<div class="shadow p-3 rounded">
+  <h5><strong>掃除方法</strong></h5>
+  <%=safe_join(post.body.split("\n"), tag(:br))%>
+</div>
+<div class="my-5 shadow p-3 rounded">
+  <h5><strong>タグ</strong></h5>
+  <% post.tags.each do |tag| %>
+    <% if admin_signed_in? %>
+      <%= link_to tag.name, admin_posts_path(tag_id: tag.id) %>
+    <% else %>
+      <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+    <% end %>
+  <% end %>
+</div>
+<div class="text-right my-3">
+  <% if admin_signed_in? %>
+    <span class="mr-3">
+      公開状態：
+      <% if post.is_publish == true %>
+        <span>公開</span>
+      <% else %>
+        <span>非公開</span>
+      <% end %>
+    </span>
+    <%= link_to "削除する", admin_post_path, class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% elsif post.member == current_member %>
+    <%= link_to "編集する", edit_post_path, class: "btn btn-success" %>
+    <%= link_to "削除する", post_path, class: "btn btn-danger ml-3", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
+</div>
