@@ -8,13 +8,15 @@
     			<h2>記事一覧</h2>
     		<% end %>
       </div>
-      <%= render "admin/posts/index", posts: @posts %>
+      <div>
+        <%= render "public/posts/index", posts: @posts %>
+      </div>
       <div class="d-flex justify-content-center mt-4">
         <%= paginate @posts, theme: 'bootstrap-5' %>
       </div>
     </div>
     <div class="col-md-4">
-      <%= render 'admin/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
+      <%= render 'public/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
     </div>
   </div>
 </div>

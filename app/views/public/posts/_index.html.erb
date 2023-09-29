@@ -1,20 +1,46 @@
 <% posts.each do |post| %>
   <div class="d-flex p-2 m-2 rounded shadow">
     <div class="mx-3 index_post_image">
-      <%= link_to post_path(post) do %>
-        <%= image_tag post.get_after_image(130,100) %>
+      <% if admin_signed_in? %>
+        <%= link_to admin_post_path(post) do %>
+          <%= image_tag post.get_after_image(130,100) %>
+        <% end %>
+      <% else %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_after_image(130,100) %>
+        <% end %>
       <% end %>
     </div>
     <div>
       <div>
-        <%= link_to post_path(post) do %>
-          <%= post.title %>
+        <% if admin_signed_in? %>
+          <%= link_to admin_post_path(post) do %>
+            <%= post.title %>
+          <% end %>
+          <span class="ml-3">
+            公開状態：
+            <% if post.is_publish == true %>
+              <span>公開</span>
+            <% else %>
+              <span>非公開</span>
+          　<% end %>
+          </span>
+        <% else %>
+          <%= link_to post_path(post) do %>
+            <%= post.title %>
+          <% end %>
         <% end %>
       </div>
       <div>
         <span class="ml-3">投稿者:</span>
-        <%= link_to member_path(post.member_id) do %>
-          <%= post.member.name %>
+        <% if admin_signed_in? %>
+          <%= link_to edit_admin_member_path(post.member_id) do %>
+            <%= post.member.name %>
+          <% end %>
+        <% else %>
+          <%= link_to member_path(post.member_id) do %>
+            <%= post.member.name %>
+          <% end %>
         <% end %>
       </div>
     </div>

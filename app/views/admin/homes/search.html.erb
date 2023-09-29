@@ -16,17 +16,19 @@
           <div class="d-flex">
       			<h2>検索結果</h2>
           </div>
-          <%= render "admin/posts/index", posts: @result %>
+          <div>
+            <%= render "public/posts/index", posts: @result %>
+          </div>
           <div class="d-flex justify-content-center mt-4">
             <%= paginate @result, theme: 'bootstrap-5' %>
           </div>
         </div>
         <div class="col-md-4">
-          <%= render 'admin/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
+          <%= render 'public/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
         </div>
       </div>
     <% end %>
   <% else %>
-      <h3>検索結果がありませんでした。条件を変更して再度検索してください。</h3>
+    <h3>検索結果がありませんでした。条件を変更して再度検索してください。</h3>
   <% end %>
 </div>

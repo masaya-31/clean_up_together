@@ -4,7 +4,11 @@
       <h2>おすすめタグ</h2>
       <% favorited_tags.each do |tag| %>
         <% unless tag.posts.count == 0 %>
-          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+          <% if admin_signed_in? %>
+            <%= link_to tag.name, admin_posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+          <% else %>
+            <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+          <% end %>
         <% end %>
       <% end %>
 
@@ -13,10 +17,20 @@
       <h2>タグ一覧</h2>
       <% tags.each do |tag| %>
         <% unless tag.posts.count == 0 %>
-          <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+          <% if admin_signed_in? %>
+            <%= link_to tag.name, admin_posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+          <% else %>
+            <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
+          <% end %>
         <% end %>
       <% end %>
-      <p><%= link_to "タグ一覧へ>>", tags_path %></p>
+      <p>
+        <% if admin_signed_in? %>
+          <%= link_to "タグ一覧へ>>", admin_tags_path %>
+        <% else %>
+          <%= link_to "タグ一覧へ>>", tags_path %>
+        <% end %>
+      </p>
     </div>
   </div>
 </div>
