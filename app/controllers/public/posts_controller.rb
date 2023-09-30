@@ -73,8 +73,9 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :before_image, :after_image, :is_publish, :member_id)
+    params.require(:post).permit(:title, :tool, :body, :before_image, :after_image, :is_publish, :member_id)
   end
+  
   # 投稿作成会員か認証
   def ensure_correct_member
     post = Post.find(params[:id])

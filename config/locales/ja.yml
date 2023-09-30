@@ -26,6 +26,7 @@ ja:
         post_id: 記事
       post:
         title: タイトル
+        tool: 掃除用具
         body: 掃除方法
         after_image: 作業後画像
     errors:

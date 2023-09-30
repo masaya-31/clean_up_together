@@ -29,27 +29,26 @@ end
 Post.find_or_create_by!(title: "洗面ボウルの掃除") do |post|
   post.before_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-1.jpg"), filename:"sample-post1-1.jpg")
   post.after_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1-2.jpg"), filename:"sample-post1-2.jpg")
-  post.body = "使用用具：雑巾、激落くん、掃除用歯ブラシ、ポリ袋（小）
-                掃除方法：
-                　１：洗面ボウルを水で洗い流す。
-                　２：激落くんで、全体を磨く。
-                　３：水で洗い流す。
-                　４：排水溝の溝に溜まった汚れを歯ブラシとポリ袋で取り除く
-                　５：全体を水で洗い流す。
-                　６：最後に雑巾で乾拭きし、水分を拭き取る。"
+  post.tool = "雑巾、激落くん、掃除用歯ブラシ、ポリ袋（小）"
+  post.body = "
+              　１：洗面ボウルを水で洗い流す。
+              　２：激落くんで、全体を磨く。
+              　３：水で洗い流す。
+              　４：排水溝の溝に溜まった汚れを歯ブラシとポリ袋で取り除く
+              　５：全体を水で洗い流す。
+              　６：最後に雑巾で乾拭きし、水分を拭き取る。
+            　"
   post.member = tarou
   post.is_publish = true
 end
 
 Post.find_or_create_by!(title: "窓拭き") do |post|
   post.after_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2-2.jpg"), filename:"sample-post2-2.jpg")
+  post.tool = "雑巾２枚（水拭き用、乾拭き用）"
   post.body = "
-                使用用具：
-                  水拭き用雑巾、乾拭き用雑巾
-                掃除方法：
-                　１：水拭き用雑巾を使用し、窓の左上から右上に雑巾で拭いていく。
-                　２：右上まで拭いた後、雑巾一枚分下げて、次は右から左に拭いていき、コの字になるように下まで拭いていく。
-                　３：全体を拭き終わったら、乾拭き用の雑巾に変えて、水拭きと同様の手順で、水を拭き取っていく。
+              　１：水拭き用雑巾を使用し、窓の左上から右上に雑巾で拭いていく。
+              　２：右上まで拭いた後、雑巾一枚分下げて、次は右から左に拭いていき、コの字になるように下まで拭いていく。
+              　３：全体を拭き終わったら、乾拭き用の雑巾に変えて、水拭きと同様の手順で、水を拭き取っていく。
               "
   post.member = katou
   post.is_publish = true
@@ -57,16 +56,26 @@ end
 
 Post.find_or_create_by!(title: "エアコンのエアーフィルター掃除") do |post|
   post.after_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3-2.jpg"), filename:"sample-post3-2.jpg")
-  post.body = "使用用具：掃除機、雑巾
-                掃除方法：
-                　１：フィルターを開ける。
-                　２：ロックを外す。
-                　３：フィルターの押さえを上げながら、エアーフィルターを取り出す。
-                　４：取り出したエアーフィルターの汚れを掃除機で吸い取る。
-                　５：掃除機で落ちない汚れを水で濡らした雑巾で拭き取る。
-                　６：エアーフィルターを陰干しする
-                　７：エアーフィルターが乾いたら、取り外しと逆の手順で取り付ける。
+  post.tool = "掃除機、雑巾"
+  post.body = "
+              　１：フィルターを開ける。
+              　２：ロックを外す。
+              　３：フィルターの押さえを上げながら、エアーフィルターを取り出す。
+              　４：取り出したエアーフィルターの汚れを掃除機で吸い取る。
+              　５：掃除機で落ちない汚れを水で濡らした雑巾で拭き取る。
+              　６：エアーフィルターを陰干しする
+              　７：エアーフィルターが乾いたら、取り外しと逆の手順で取り付ける。
               "
   post.member = yamada
   post.is_publish = true
 end
+
+Tag.find_or_create_by!(name: "洗面所")
+Tag.find_or_create_by!(name: "日常")
+Tag.find_or_create_by!(name: "窓")
+Tag.find_or_create_by!(name: "エアコン")
+
+PostTag.find_or_create_by!(post_id: 1, tag_id: 1)
+PostTag.find_or_create_by!(post_id: 1, tag_id: 2)
+PostTag.find_or_create_by!(post_id: 2, tag_id: 3)
+PostTag.find_or_create_by!(post_id: 3, tag_id: 4)

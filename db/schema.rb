@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_131559) do
   create_table "posts", force: :cascade do |t|
     t.integer "member_id", null: false
     t.string "title", null: false
+    t.string "tool", null: false
     t.text "body", null: false
     t.boolean "is_publish", default: true, null: false
     t.datetime "created_at", precision: 6, null: false

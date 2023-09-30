@@ -12,6 +12,7 @@ class Post < ApplicationRecord
 
   validates :after_image, presence: true
   validates :title, presence: true, length: { maximum: 30 }
+  validates :tool, presence: true
   validates :body, presence: true
 
   scope :published, -> {where(is_publish: true)}

@@ -28,6 +28,10 @@
     <div class="row justify-content-center mt-3">
       <div class="col-lg-10">
         <div class="form-group">
+          <h5><strong><%= f.label "掃除用具(必須)" %></strong></h5>
+          <%= f.text_field :tool, class: "form-control" %>
+        </div>
+        <div class="form-group">
           <h5><strong><%= f.label "掃除方法(必須)" %></strong></h5>
           <%= f.text_area :body, class: "form-control", rows: 20 %>
         </div>
