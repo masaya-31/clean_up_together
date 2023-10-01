@@ -5,7 +5,6 @@ body {
   position: relative;
   padding-bottom: 100px;
   box-sizing: border-box;
-  background-color: #EEEEEE;
 }
 
 header {
@@ -17,6 +16,10 @@ footer {
   position: absolute;
   bottom: 0;
   background-color: #ccc;
+}
+
+.top_favorite_posts,.top_new_posts {
+  background-color: #fdf8f0;
 }
 
 .top_post {
