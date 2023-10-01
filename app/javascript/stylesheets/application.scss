@@ -11,6 +11,20 @@ header {
   background-color: white;
 }
 
+.header-inner {
+  font-family: serif;
+}
+
+.header-logo {
+  display: inline-block;
+}
+
+.header-sub {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
 footer {
   width: 100%;
   position: absolute;
