@@ -5,11 +5,7 @@
   <% end %>
   <div class="header-sub">
     <div>
-      <% if admin_signed_in? %>
-        <%= render 'admin/homes/search' %>
-      <% else %>
-        <%= render 'layouts/search' %>
-      <% end %>
+      <%= render 'layouts/search' %>
     </div>
     <div>
       <% unless member_signed_in? || admin_signed_in? %>
