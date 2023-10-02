@@ -3,6 +3,7 @@
     <h1 class="text-dark">Keep Clean House</h1>
     <p class="text-dark">家を清潔に</p>
   <% end %>
+  <div class="openbtn"><span></span><span></span><span></span></div>
   <div class="header-sub">
     <div>
       <%= render 'layouts/search' %>
@@ -60,3 +61,9 @@
     </ul>
   </nav>
 </div>
+
+<script>
+  $(".openbtn").click(function () {  //HTMLの.openbtnの部分がクリックされたら
+    $(this).toggleClass("active"); //.openbtnに.activeを付与してね
+  });
+</script>

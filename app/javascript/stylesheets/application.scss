@@ -19,6 +19,56 @@ header {
   display: inline-block;
 }
 
+.openbtn {
+  display: none;
+  position: fixed; /* 設置する位置を固定します */
+  top: 10px; /* 上から10pxの位置 */
+  right: 10px; /* 右から10pxの位置 */
+  z-index: 9999; /* 一番手前に表示 */
+  cursor: pointer; /* カーソルが上に来たらポインターに変身 */
+  width: 50px; /* 横幅５０px */
+  height: 50px; /* 縦幅５０px */
+}
+
+.openbtn span {
+  display: inline-block;
+  transition: all 0.4s; /* 変化速度 */
+  position: absolute; /* 四角い箱に対して線の位置を調整するためのおまじない */
+  left: 14px; /* 四角の箱の左から１４pxの位置 */
+  width: 45%; /* 線の幅 */
+  height: 3px; /* 線の太さ */
+  border-radius: 2px; /* 線の角を少し丸く */
+  background-color: #666; /* 線の色 */
+}
+
+.openbtn span:nth-of-type(1) {
+  top: 15px; /* １本目の線の四角い箱の上からの位置 */
+}
+
+.openbtn span:nth-of-type(2) {
+  top: 23px; /* ２本目の線の四角い箱の上からの位置 */
+}
+
+.openbtn span:nth-of-type(3) {
+  top: 31px; /* ３本目の線の四角い箱の上からの位置 */
+}
+
+.openbtn.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg); /* １本目の線の角度と上からの位置の変更 */
+  width: 30%;
+}
+.openbtn.active span:nth-of-type(2) {
+  opacity: 0; /* ２本目の線を見えなくする */
+}
+.openbtn.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg); /* １本目の線の角度と上からの位置の変更 */
+  width: 30%;
+}
+
 .header-sub {
   position: absolute;
   top: 10px;
