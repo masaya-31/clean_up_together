@@ -4,6 +4,61 @@
     <p class="text-dark">家を清潔に</p>
   <% end %>
   <div class="openbtn"><span></span><span></span><span></span></div>
+  <nav class="gnav">
+    <div class="gnav_list"><!--中にgnav_listレイヤーを作ると、長くてもスライドして表示出る -->
+      <div class="gnav_list_search">
+        <%= render 'layouts/search' %>
+      </div>
+      <div class="gnav_list_btn">
+        <% unless member_signed_in? || admin_signed_in? %>
+          <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class: "btn btn-primary form-control" %>
+        <% end %>
+      </div>
+
+      <ul class="list-unstyled rounded">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to '会員一覧', admin_members_path %>
+          </li>
+          <li>
+            <%= link_to '投稿記事一覧', admin_posts_path %>
+          </li>
+          <li>
+            <%= link_to 'コメント一覧', admin_post_comments_path %>
+          </li>
+          <li>
+            <%= link_to 'タグ一覧', admin_tags_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          </li>
+        <% elsif member_signed_in? %>
+          <li>
+            <%= link_to 'マイページ', member_path(current_member) %>
+          </li>
+          <li>
+            <%= link_to '投稿記事一覧', posts_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "サイトについて", about_path %>
+          </li>
+          <li>
+            <%= link_to "投稿一覧", posts_path %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_member_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_member_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
   <div class="header-sub">
     <div>
       <%= render 'layouts/search' %>
@@ -16,7 +71,7 @@
       <% end %>
     </div>
   </div>
-  <nav>
+  <nav class="header-nav">
     <ul class="list-group list-group-horizontal">
       <% if admin_signed_in? %>
         <li class="list-group-item flex-fill">
@@ -25,7 +80,7 @@
         <li class="list-group-item flex-fill">
           <%= link_to '投稿記事一覧', admin_posts_path, class: 'nav-link text-dark' %>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item flex-fill list_item_none">
           <%= link_to 'コメント一覧', admin_post_comments_path, class: 'nav-link text-dark' %>
         </li>
         <li class="list-group-item flex-fill">
@@ -63,7 +118,15 @@
 </div>
 
 <script>
-  $(".openbtn").click(function () {  //HTMLの.openbtnの部分がクリックされたら
-    $(this).toggleClass("active"); //.openbtnに.activeを付与してね
+  $(".openbtn").click(function () {
+    //ボタンがクリックされたら
+    $(this).toggleClass("active"); //.openbtnに.activeを付与
+    $(".gnav").toggleClass("list_active"); //.gnaveに.list_activeを付与
+  });
+
+  $(".gnav a").click(function () {
+    //リンクがクリックされたらクラスを削除する
+    $(".openbtn").removeClass("active"); //.openbtnから.activeを削除
+    $(".gnav").removeClass("list_active"); //#gnavから.list_activeも削除
   });
 </script>

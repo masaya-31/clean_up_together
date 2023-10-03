@@ -1,8 +1,10 @@
 <% if admin_signed_in? %>
   <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :content %>
-    <%= f.select :model, options_for_select({ "会員"=> "member", "投稿記事" => "post" }) %>
-    <div class="text-right"><%= submit_tag '検索', class: "btn btn-primary mt-2" %></div>
+    <%= f.text_field :content, class: "form-control", placeholder: "キーワードを入力" %>
+    <div class="d-flex mt-2 justify-content-end">
+      <%= f.select :model, options_for_select({ "会員"=> "member", "投稿記事" => "post" }) %>
+      <div class="ml-3"><%= submit_tag '検索', class: "btn btn-primary" %></div>
+    </div>
   <% end %>
 <% else %>
   <%= form_with url: posts_path, method: :get, local: true do |f|%>
