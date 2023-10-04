@@ -15,7 +15,7 @@
         <% end %>
       </div>
 
-      <ul class="list-unstyled rounded">
+      <ul class="rounded">
         <% if admin_signed_in? %>
           <li>
             <%= link_to '会員一覧', admin_members_path %>
@@ -119,14 +119,12 @@
 
 <script>
   $(".openbtn").click(function () {
-    //ボタンがクリックされたら
-    $(this).toggleClass("active"); //.openbtnに.activeを付与
-    $(".gnav").toggleClass("list_active"); //.gnaveに.list_activeを付与
+    $(this).toggleClass("active");
+    $(".gnav").toggleClass("list_active");
   });
 
   $(".gnav a").click(function () {
-    //リンクがクリックされたらクラスを削除する
-    $(".openbtn").removeClass("active"); //.openbtnから.activeを削除
-    $(".gnav").removeClass("list_active"); //#gnavから.list_activeも削除
+    $(".openbtn").removeClass("active");
+    $(".gnav").removeClass("list_active");
   });
 </script>
