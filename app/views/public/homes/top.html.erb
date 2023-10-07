@@ -1,22 +1,22 @@
 <div class="container">
   <span><%= flash[:notice] %></span>
   <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-12">
       <div class="mb-2">
-        <div class="top_favorite_posts p-2 rounded">
+        <div class="top_favorite_posts p-2 rounded bg-white">
           <h2>おすすめ記事</h2>
           <%= render 'public/posts/top', posts: @favorited_posts %>
         </div>
       </div>
       <div class="mb-2">
-        <div class="top_new_posts p-2 rounded">
+        <%= render 'public/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
+      </div>
+      <div class="mb-2">
+        <div class="top_new_posts p-2 rounded bg-white">
           <h2>新着記事</h2>
           <%= render 'public/posts/top', posts: @posts %>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3">
-      <%= render 'public/posts/tag', tags: @tags, favorited_tags: @favorited_tags %>
     </div>
   </div>
 </div>
