@@ -37,9 +37,9 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :show, :index, :create, :edit, :update, :destroy]
     resources :members, only: [:show] do
       resource :relationships, only: [:create, :destroy]
-      get "following" => "relationships#following", as: "following"
       get "favorite", on: :member
       collection do
+        get "following" => "relationships#following", as: "following"
         get "unpublish"
         get 'edit_information' => 'members#edit'
         get 'login_edit'

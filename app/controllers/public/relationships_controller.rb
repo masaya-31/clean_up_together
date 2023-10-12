@@ -14,7 +14,7 @@ class Public::RelationshipsController < ApplicationController
   end
   # フォロー一覧表示
   def following
-    @member = Member.find(params[:member_id])
+    @member = current_member
     @members = @member.following.page(params[:page])
   end
 end

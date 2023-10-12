@@ -4,16 +4,13 @@
       <% if @members.blank? %>
         <h2>フォローしている会員がいません。</h2>
       <% else %>
-        <h2><%= @member.name %>さんのフォロー一覧</h2>
+        <h2>フォロー会員一覧</h2>
         <table class="table table-bordered">
           <thead class="thead-light">
             <tr>
               <th>名前（表示名）</th>
               <th>投稿数</th>
-              <th>フォロー数</th>
-              <% if current_member == @member %>
-                <th></th>
-              <% end %>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -26,11 +23,6 @@
                 <td>
                   <%= link_to member_path(member) do %>
                     <%= member.posts.count %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to member_following_path(member) do %>
-                    <%= member.following.count %>
                   <% end %>
                 </td>
                 <% if current_member == @member %>
