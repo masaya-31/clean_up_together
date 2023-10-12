@@ -157,6 +157,16 @@ footer {
   line-height: 130px;
 }
 
+.member_text {
+  color: black;
+  border-bottom: 2px solid #17a2b8;
+  text-decoration: none;
+}
+
+.member_text:hover {
+  text-decoration: none;
+}
+
 .simple-calendar {
   table {
     -webkit-border-horizontal-spacing: 0px;
