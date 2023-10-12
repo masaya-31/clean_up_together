@@ -70,6 +70,14 @@
           </li>
         <% end %>
       </ul>
+
+      <% if member_signed_in? %>
+        <ul class="rounded">
+          <li><%= link_to "プロフィール編集へ", edit_information_members_path %></li>
+          <li><%= link_to "カレンダーへ", events_path %></li>
+          <li><%= link_to "フォロー会員一覧へ", member_following_path(member) %></li>
+        </ul>
+      <% end %>
     </div>
   </nav>
   <nav class="header-nav text-center">

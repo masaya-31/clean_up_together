@@ -235,18 +235,6 @@ footer {
 }
 
 @media (max-width: 992px) {
-  .top_header_bottom {
-    width: 100%;
-  }
-
-  .openbtn {
-    display: block;
-  }
-
-  .header-sub {
-    display: none;
-  }
-
 }
 
 @media (max-width: 768px) {
@@ -255,10 +243,20 @@ footer {
   }
 
   .list_item_none {
-  display: none;
-}
+    display: none;
+  }
 
+  .header-sub {
+    display: none;
+  }
 
+  .openbtn {
+    display: block;
+  }
+
+  .member_text {
+    display: none;
+  }
 }
 
 @media (max-width: 576px) {
