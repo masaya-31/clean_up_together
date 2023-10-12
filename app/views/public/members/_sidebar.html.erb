@@ -1,15 +1,19 @@
 <div class="p-3 rounded bg-white">
   <p>プロフィール</p>
-  <div class="m-3">
-    <p>表示名</p>
-    <p class="ml-2"><%= member.name %></p>
-    <% if member.introduction.present? %>
+  <div>
+    <div class="p-2 mb-2">
+      <p>表示名</p>
+      <p class="ml-2"><%= member.name %></p>
+    </div>
+    <div class="p-2">
+      <% if member.introduction.present? %>
       <p>自己紹介</p>
       <p class="ml-2">
         <%= safe_join(member.introduction.split("\n"), tag(:br)) %>
       </p>
+    </div>
     <% end %>
-    <div class="mt-5">
+    <div class="mt-3 ml-3">
       <% if member == current_member %>
         <p><%= link_to "プロフィール編集へ", edit_information_members_path, class: "member_text" %></p>
         <p><%= link_to "カレンダーへ", events_path, class: "member_text" %></p>
