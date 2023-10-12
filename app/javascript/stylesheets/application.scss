@@ -18,6 +18,10 @@ body {
   font-family: cursive;
 }
 
+.admin_header {
+  display: flex;
+}
+
 .gnav ul li a {
   color: #333;
   padding: 10px;
@@ -258,5 +262,13 @@ footer {
 
   .header-nav {
     display: none;
+  }
+
+  .admin_header {
+  display: block;
+  }
+
+  .admin_header_btn {
+    margin-top: 10px;
   }
 }
