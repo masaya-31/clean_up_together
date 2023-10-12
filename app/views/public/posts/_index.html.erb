@@ -3,11 +3,11 @@
     <div class="mx-3 index_post_image">
       <% if admin_signed_in? %>
         <%= link_to admin_post_path(post) do %>
-          <%= image_tag post.get_after_image(130,100) %>
+          <%= image_tag post.get_after_image(100,130) %>
         <% end %>
       <% else %>
         <%= link_to post_path(post) do %>
-          <%= image_tag post.get_after_image(130,100) %>
+          <%= image_tag post.get_after_image(100,130) %>
         <% end %>
       <% end %>
     </div>
