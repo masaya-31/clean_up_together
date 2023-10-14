@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap m-3 justify-content-center">
   <% posts.each do |post| %>
   <div class="m-3 top_post">
-    <%= link_to post_path(post) do %>
+    <%= link_to post_path(post), class: "top_post_link" do %>
       <%= image_tag post.get_after_image(200,300) %>
       <p class="text-dark"><%= truncate(post.title, length: 12) %></p>
     <% end %>

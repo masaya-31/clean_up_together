@@ -11,19 +11,6 @@
           <% end %>
         <% end %>
       <% end %>
-
-    </div>
-    <div>
-      <h2>タグ一覧</h2>
-      <% tags.each do |tag| %>
-        <% unless tag.posts.count == 0 %>
-          <% if admin_signed_in? %>
-            <%= link_to tag.name, admin_posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
-          <% else %>
-            <%= link_to tag.name, posts_path(tag_id: tag.id), class: "bg-light text-dark mx-1" %>
-          <% end %>
-        <% end %>
-      <% end %>
       <p>
         <% if admin_signed_in? %>
           <%= link_to "タグ一覧へ>>", admin_tags_path %>
