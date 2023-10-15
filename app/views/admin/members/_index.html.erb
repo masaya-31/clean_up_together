@@ -2,7 +2,7 @@
   <thead class="thead-light">
     <tr>
       <th>会員名</th>
-      <th>メールアドレス</th>
+      <th class="sm_none">メールアドレス</th>
       <th>投稿記事数</th>
       <th>コメント数</th>
       <th>利用可能状況</th>
@@ -15,7 +15,7 @@
           <%= member.name %>
         <% end %>
       </td>
-      <td><%= member.email %></td>
+      <td class="sm_none"><%= member.email %></td>
       <td>
         <%= link_to posts_admin_member_path(member) do %>
           <%= member.posts.count %>
