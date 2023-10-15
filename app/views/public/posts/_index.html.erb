@@ -33,15 +33,7 @@
       </div>
       <div>
         <span class="ml-3">投稿者:</span>
-        <% if admin_signed_in? %>
-          <%= link_to edit_admin_member_path(post.member_id) do %>
-            <%= post.member.name %>
-          <% end %>
-        <% else %>
-          <%= link_to member_path(post.member_id) do %>
-            <%= post.member.name %>
-          <% end %>
-        <% end %>
+        <%= post.member.name %>
       </div>
     </div>
   </div>
