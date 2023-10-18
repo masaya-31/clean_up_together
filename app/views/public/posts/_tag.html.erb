@@ -1,5 +1,5 @@
 <div class="sidebar bg-white">
-  <div class="sidebar_tags pt-2 pb-5 px-2 rounded">
+  <div class="sidebar_tags p-2 rounded">
     <div class="mb-3">
       <h2>おすすめタグ</h2>
       <% favorited_tags.each do |tag| %>
@@ -11,7 +11,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <p>
+      <p class="pt-2">
         <% if admin_signed_in? %>
           <%= link_to "タグ一覧へ>>", admin_tags_path %>
         <% else %>
