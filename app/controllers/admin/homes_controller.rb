@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
     @model = params[:model]
     @content = params[:content]
     @result = search_for(@model, @content).page(params[:page])
-    # いいね順にタグを30件表示
+    # いいね数順にタグを30件表示
     @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
   end
 
