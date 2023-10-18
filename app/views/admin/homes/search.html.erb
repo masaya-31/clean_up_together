@@ -12,7 +12,7 @@
       </div>
     <% else %>
       <div class="row">
-        <div class="col-md-8 bg-white mb-3 rounded py-3">
+        <div class="col-md-9 bg-white mb-3 rounded py-3">
           <div class="d-flex">
       			<h2>検索結果</h2>
           </div>
@@ -23,7 +23,7 @@
             <%= paginate @result, theme: 'bootstrap-5' %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= render 'public/posts/tag', favorited_tags: @favorited_tags %>
         </div>
       </div>
