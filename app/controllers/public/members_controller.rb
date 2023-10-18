@@ -57,6 +57,7 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:email)
   end
 
+  # ゲストユーザーの編集禁止
   def ensure_normal_user
     if current_member.email == 'guest@example.com'
       flash[:color] = "text-danger"
