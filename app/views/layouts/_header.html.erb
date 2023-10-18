@@ -34,7 +34,7 @@
             <%= link_to '会員一覧', admin_members_path %>
           </li>
           <li>
-            <%= link_to '投稿記事一覧', admin_posts_path %>
+            <%= link_to '記事一覧', admin_posts_path %>
           </li>
           <li>
             <%= link_to 'コメント一覧', admin_post_comments_path %>
@@ -50,7 +50,10 @@
             <%= link_to 'マイページ', member_path(current_member) %>
           </li>
           <li>
-            <%= link_to '投稿記事一覧', posts_path %>
+            <%= link_to 'カレンダー', events_path %>
+          </li>
+          <li>
+            <%= link_to '記事一覧', posts_path %>
           </li>
           <li>
             <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
@@ -60,7 +63,7 @@
             <%= link_to "サイトについて", about_path %>
           </li>
           <li>
-            <%= link_to "投稿一覧", posts_path %>
+            <%= link_to "記事一覧", posts_path %>
           </li>
           <li>
             <%= link_to "新規登録", new_member_registration_path %>
@@ -87,7 +90,7 @@
           <%= link_to '会員一覧', admin_members_path, class: 'nav-link text-dark' %>
         </li>
         <li class="list-group-item flex-fill">
-          <%= link_to '投稿記事一覧', admin_posts_path, class: 'nav-link text-dark' %>
+          <%= link_to '記事一覧', admin_posts_path, class: 'nav-link text-dark' %>
         </li>
         <li class="list-group-item flex-fill list_item_none">
           <%= link_to 'コメント一覧', admin_post_comments_path, class: 'nav-link text-dark' %>
@@ -103,7 +106,10 @@
           <%= link_to 'マイページ', member_path(current_member), class: 'nav-link text-dark' %>
         </li>
         <li class="list-group-item flex-fill">
-          <%= link_to '投稿記事一覧', posts_path, class: 'nav-link text-dark' %>
+          <%= link_to 'カレンダー', events_path, class: 'nav-link text-dark' %>
+        </li>
+        <li class="list-group-item flex-fill">
+          <%= link_to '記事一覧', posts_path, class: 'nav-link text-dark' %>
         </li>
         <li class="list-group-item flex-fill">
           <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -113,7 +119,7 @@
           <%= link_to "サイトについて", about_path, class: 'nav-link text-dark' %>
         </li class="list-group-item flex-fill">
         <li class="list-group-item flex-fill">
-          <%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %>
+          <%= link_to "記事一覧", posts_path, class: 'nav-link text-dark' %>
         </li>
         <li class="list-group-item flex-fill">
           <%= link_to "新規登録", new_member_registration_path, class: 'nav-link text-dark' %>

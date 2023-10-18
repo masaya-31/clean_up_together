@@ -4,6 +4,7 @@ class Public::EventsController < ApplicationController
 
   def index
     @events = current_member.events
+    # 今日以降の予定を一覧表示
     @event_lists = current_member.events.where("start_time >= ?", Date.today).order(start_time: :asc)
   end
 
@@ -19,7 +20,7 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
+    # 参考記事の選択
     if params[:event][:select_post] == 'no_post'
       @event.post_id = -1
     elsif params[:event][:select_post] == 'my_post' && params[:member_post_id].present?
@@ -48,6 +49,7 @@ class Public::EventsController < ApplicationController
   end
 
   def update
+    # 参考記事の選択
     @event = Event.find(params[:id])
     if params[:event][:select_post] == 'no_post'
       @event.post_id = -1
