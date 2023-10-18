@@ -15,8 +15,8 @@ class Public::PostsController < ApplicationController
     else
       @posts = Post.all.published.page(params[:page])
     end
-    @tags = Tag.all.limit(30)
-    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
+    # 件数の順にタグを30件表示
+    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
     @keyword = params[:keyword]
   end
 
