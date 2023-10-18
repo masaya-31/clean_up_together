@@ -18,7 +18,7 @@ class Admin::MembersController < ApplicationController
   def posts
     @member = Member.find(params[:id])
     @posts = @member.posts.page(params[:page])
-    # いいね数順にタグを30件表示
+    # 件数の多い順にタグを30件表示
     @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
   end
 

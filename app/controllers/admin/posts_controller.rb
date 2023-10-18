@@ -10,7 +10,7 @@ class Admin::PostsController < ApplicationController
       # 投稿一覧表示
       @posts = Post.all.order(created_at: :desc).page(params[:page])
     end
-    # いいね数順にタグを30件表示
+    # 件数の多い順にタグを30件表示
     @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
   end
 
