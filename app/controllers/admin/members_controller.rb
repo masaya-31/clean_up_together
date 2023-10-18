@@ -18,8 +18,8 @@ class Admin::MembersController < ApplicationController
   def posts
     @member = Member.find(params[:id])
     @posts = @member.posts.page(params[:page])
-    @tags = Tag.all.limit(30)
-    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
+    # いいね順にタグを30件表示
+    @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
   end
 
   def post_comments

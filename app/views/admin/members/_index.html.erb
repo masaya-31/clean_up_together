@@ -2,6 +2,7 @@
   <thead class="thead-light">
     <tr>
       <th>会員名</th>
+      <!--576px以下の時非表示-->
       <th class="sm_none">メールアドレス</th>
       <th>投稿記事数</th>
       <th>コメント数</th>
@@ -15,6 +16,7 @@
           <%= member.name %>
         <% end %>
       </td>
+      <!--576px以下の時非表示-->
       <td class="sm_none"><%= member.email %></td>
       <td>
         <%= link_to posts_admin_member_path(member) do %>
