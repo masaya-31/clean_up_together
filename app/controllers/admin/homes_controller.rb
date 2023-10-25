@@ -2,7 +2,7 @@ class Admin::HomesController < ApplicationController
   def search
     @model = params[:model]
     @content = params[:content]
-    @result = search_for(@model, @content).page(params[:page])
+    @result = search_for(@model, @content).order(created_at: :desc).page(params[:page])
     # 件数の順にタグを30件表示
     @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
   end

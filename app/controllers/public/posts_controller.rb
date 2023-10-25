@@ -6,7 +6,7 @@ class Public::PostsController < ApplicationController
   def index
     # キーワード検索の時
     if params[:keyword].present?
-      @posts = Post.search(params[:keyword]).published.page(params[:page])
+      @posts = Post.search(params[:keyword]).order(created_at: :desc).published.page(params[:page])
     # タグ検索の時
     elsif params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
