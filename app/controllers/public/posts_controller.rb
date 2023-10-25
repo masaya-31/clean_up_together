@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
       @posts = @tag.posts.order(created_at: :desc).published.page(params[:page])
     # 全ての投稿一覧
     else
-      @posts = Post.all.published.page(params[:page])
+      @posts = Post.all.order(created_at: :desc).published.page(params[:page])
     end
     # 件数の順にタグを30件表示
     @favorited_tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').limit(30)
