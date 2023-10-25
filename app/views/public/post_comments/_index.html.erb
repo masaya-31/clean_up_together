@@ -4,12 +4,13 @@
       <tr>
         <td>
           <div><%= l post_comment.created_at %></div>
-          ユーザー名：<%= post_comment.member.name %>
-          <% if admin_signed_in? %>
-            <%= link_to "削除", admin_post_comment_path(post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
-          <% elsif post_comment.member == current_member %>
-            <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
-          <% end %>
+          <div class="mb-2">ユーザー名：<%= post_comment.member.name %>
+            <% if admin_signed_in? %>
+              <%= link_to "削除", admin_post_comment_path(post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
+            <% elsif post_comment.member == current_member %>
+              <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
+            <% end %>
+          </div>
           <div><%= safe_join(post_comment.comment.split("\n"), tag(:br)) %></div>
         </td>
       </tr>

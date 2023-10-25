@@ -28,7 +28,7 @@
 
       <!--コメント作成フォーム-->
       <div class="post-comments-form">
-        <% if @post.member != current_member && member_signed_in? %>
+        <% if member_signed_in? %>
           <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
         <% end %>
       </div>
