@@ -22,24 +22,7 @@
         </span>
       </div>
       <div class="post-comments-index">
-        <% @post_comments.each do |post_comment| %>
-          <table class="mb-3">
-            <tbody>
-              <tr>
-                <td>
-                  ユーザー名：<%= post_comment.member.name %>
-                  <%= link_to "削除", admin_post_comment_path(post_comment), method: :delete, remote: true, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
-                </td>
-              </tr>
-              <tr>
-                <td><%= post_comment.comment %></td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-        <div class="d-flex justify-content-center mt-4">
-          <%= paginate @post_comments, theme: 'bootstrap-5' %>
-        </div>
+        <%= render 'public/post_comments/index', post: @post, post_comments: @post_comments %>
       </div>
     </div>
   </div>

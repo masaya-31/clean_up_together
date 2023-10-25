@@ -1,21 +1,22 @@
 <% comments.each do |comment| %>
-  <table class="mb-3 shadow">
+  <table class="mb-3 shadow rounded">
     <tbody>
       <tr>
-        <td class="pt-3 pl-3">
-          投稿記事：<%= link_to admin_post_path(comment.post), class: "ml-3" do %>
-            <%= comment.post.title %>
-          <% end %>
+        <td class="p-3">
+          <div>
+            <%= l comment.created_at %>
+            <span class="ml-3">
+              投稿記事：<%= link_to admin_post_path(comment.post), class: "ml-3" do %>
+                <%= comment.post.title %>
+              <% end %>
+            </span>
+          </div>
+          <div class="my-2">
+            ユーザー名：<%= comment.member.name %>
+            <%= link_to "削除", admin_post_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
+          </div>
+          <div><%= safe_join(comment.comment.split("\n"), tag(:br)) %></div>
         </td>
-      </tr>
-      <tr>
-        <td class="px-3">
-          ユーザー名：<%= comment.member.name %>
-          <%= link_to "削除", admin_post_comment_path(comment), method: :delete, class: "btn btn-sm btn-danger ml-3", "data-confirm" => "本当に削除しますか？" %>
-        </td>
-      </tr>
-      <tr>
-        <td class="pb-3 pl-3">コメント：<%= comment.comment %></td>
       </tr>
     </tbody>
   </table>

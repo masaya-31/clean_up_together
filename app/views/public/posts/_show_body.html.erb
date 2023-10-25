@@ -1,10 +1,10 @@
 <div class="shadow p-3 rounded mb-3">
   <h5><strong>掃除用具</strong></h5>
-  <%=safe_join(post.tool.split("\n"), tag(:br))%>
+  <%= safe_join(post.tool.split("\n"), tag(:br)) %>
 </div>
 <div class="shadow p-3 rounded">
   <h5><strong>掃除方法</strong></h5>
-  <%=safe_join(post.body.split("\n"), tag(:br))%>
+  <%= safe_join(post.body.split("\n"), tag(:br)) %>
 </div>
 <div class="my-5 shadow p-3 rounded">
   <h5><strong>タグ</strong></h5>
