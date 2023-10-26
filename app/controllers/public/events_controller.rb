@@ -21,17 +21,8 @@ class Public::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     # 参考記事の選択
-    if params[:event][:select_post] == 'no_post'
-      @event.post_id = -1
-    elsif params[:event][:select_post] == 'my_post' && params[:member_post_id].present?
-      @selected_post = current_member.posts.find(params[:member_post_id])
-      @event.post_id = @selected_post.id
-    elsif params[:event][:select_post] == 'favorite_post' && params[:favorite_post_id].present?
-      @selected_post = Post.find(params[:favorite_post_id])
-      @event.post_id = @selected_post.id
-    end
+    post_choice
 
-    @event.member_id = current_member.id
     if @event.save
       flash[:color] = "text-success"
       redirect_to events_path, notice: 'イベントを作成しました'
@@ -49,19 +40,10 @@ class Public::EventsController < ApplicationController
   end
 
   def update
-    # 参考記事の選択
     @event = Event.find(params[:id])
-    if params[:event][:select_post] == 'no_post'
-      @event.post_id = -1
-    elsif params[:event][:select_post] == 'my_post' && params[:member_post_id].present?
-      @selected_post = current_member.posts.find(params[:member_post_id])
-      @event.post_id = @selected_post.id
-    elsif params[:event][:select_post] == 'favorite_post' && params[:favorite_post_id].present?
-      @selected_post = Post.find(params[:favorite_post_id])
-      @event.post_id = @selected_post.id
-    end
+    # 参考記事の選択
+    post_choice
 
-    @event.member_id = current_member.id
     if @event.update(event_params)
       flash[:color] = "text-success"
       redirect_to events_path, notice: 'イベントを編集しました'
@@ -95,5 +77,19 @@ class Public::EventsController < ApplicationController
     unless member.id == current_member.id
       redirect_to events_path
     end
+  end
+
+  # 参考記事の選択
+  def post_choice
+    if params[:event][:select_post] == 'no_post'
+      @event.post_id = -1
+    elsif params[:event][:select_post] == 'my_post' && params[:member_post_id].present?
+      @selected_post = current_member.posts.find(params[:member_post_id])
+      @event.post_id = @selected_post.id
+    elsif params[:event][:select_post] == 'favorite_post' && params[:favorite_post_id].present?
+      @selected_post = Post.find(params[:favorite_post_id])
+      @event.post_id = @selected_post.id
+    end
+    @event.member_id = current_member.id
   end
 end
