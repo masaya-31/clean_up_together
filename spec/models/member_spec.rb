@@ -25,5 +25,16 @@ RSpec.describe 'Memberモデルのテスト', type: :model do
         is_expected.to eq true
       end
     end
+
+    context 'introductionカラム' do
+      it '100文字以内であること：１００文字は〇' do
+        member.introduction = Faker::Lorem.characters(number: 100)
+        is_expected.to eq true
+      end
+      it '100文字以内であること：１０1文字は×' do
+        member.introduction = Faker::Lorem.characters(number: 101)
+        is_expected.to eq false
+      end
+    end
   end
 end
