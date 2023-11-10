@@ -30,5 +30,12 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
+
+    context 'bodyカラム' do
+      it '空欄でないこと' do
+        post.body = ''
+        is_expected.to eq false
+      end
+    end
   end
 end
