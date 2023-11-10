@@ -23,5 +23,12 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         is_expected.to eq true
       end
     end
+
+    context 'toolカラム' do
+      it '空欄でないこと' do
+        post.tool = ''
+        is_expected.to eq false
+      end
+    end
   end
 end
