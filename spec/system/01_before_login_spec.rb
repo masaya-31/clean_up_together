@@ -36,9 +36,15 @@ describe 'ユーザーログイン前のテスト' do
     end
   end
 
-  describe 'ヘッダーのテスト' do
+  describe 'ヘッダーのテスト: ログインしていない場合' do
     before do
       visit root_path
+    end
+  end
+
+  describe 'ユーザーの新規登録テスト' do
+    before do
+      visit new_member_registration_path
     end
   end
 end
