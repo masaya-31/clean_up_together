@@ -14,4 +14,12 @@ describe '管理者側のテスト' do
       end
     end
   end
+
+  describe '管理者ログイン' do
+    let(:admin) { create(:admin) }
+
+    before do
+      visit new_admin_session_path
+    end
+  end
 end
