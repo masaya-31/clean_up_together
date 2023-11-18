@@ -76,5 +76,22 @@ describe 'ユーザーログイン前のテスト' do
         expect(page).to have_button '登録する'
       end
     end
+    
+    context '新規登録成功のテスト' do
+      before do
+        fill_in 'member[name]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'member[email]', with: Faker::Internet.email
+        fill_in 'member[password]', with: 'password'
+        fill_in 'member[password_confirmation]', with: 'password'
+      end
+      
+      it '正しく新規登録される' do
+        expect { click_button '登録する' }.to change(Member.all, :count).by(1)
+      end
+      it '新規登録後のリダイレクト先が、新規登録できたユーザのマイページ画面になっている' do
+        click_button '登録する'
+        expect(current_path).to eq '/members/' + Member.last.id.to_s
+      end
+    end
   end
 end
