@@ -106,6 +106,18 @@ describe 'ユーザーログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/members/sign_in'
       end
+      it '「ログイン」と表示される' do
+        expect(page).to have_content 'ログイン'
+      end
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'member[email]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'member[password]'
+      end
+      it 'ログインボタンが表示される' do
+        expect(page).to have_button 'ログイン'
+      end
     end
   end
 end
