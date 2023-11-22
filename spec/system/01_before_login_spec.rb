@@ -118,6 +118,21 @@ describe 'ユーザーログイン前のテスト' do
       it 'ログインボタンが表示される' do
         expect(page).to have_button 'ログイン'
       end
+      it 'nameフォームは表示されない' do
+        expect(page).not_to have_field 'member[name]'
+      end
+    end
+
+    context 'ログイン成功のテスト' do
+      before do
+        fill_in 'member[email]', with: member.email
+        fill_in 'member[password]', with: member.password
+        click_button 'ログイン'
+      end
+
+      it 'ログイン後のリダイレクト先が、ログインしたユーザのマイページ画面になっている' do
+        expect(current_path).to eq '/members/' + member.id.to_s
+      end
     end
   end
 end
