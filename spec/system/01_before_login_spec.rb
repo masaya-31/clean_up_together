@@ -134,5 +134,17 @@ describe 'ユーザーログイン前のテスト' do
         expect(current_path).to eq '/members/' + member.id.to_s
       end
     end
+    
+    context 'ログイン失敗のテスト' do
+      before do
+        fill_in 'member[email]', with: ''
+        fill_in 'member[password]', with: ''
+        click_button 'ログイン'
+      end
+      
+      it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
+        expect(current_path).to eq '/members/sign_in'
+      end
+    end
   end
 end
