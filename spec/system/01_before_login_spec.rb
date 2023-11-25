@@ -32,11 +32,13 @@ describe 'ユーザーログイン前のテスト' do
 
   describe 'About画面のテスト' do
     before do
+      # about_pathに遷移する
       visit about_path
     end
 
     context '表示内容の確認' do
       it 'URLが正しい' do
+        # URLが/aboutであるか確認する
         expect(current_path).to eq '/about'
       end
     end
@@ -44,6 +46,7 @@ describe 'ユーザーログイン前のテスト' do
 
   describe 'ユーザーの新規登録テスト' do
     before do
+      # 会員の新規登録画面に遷移する
       visit new_member_registration_path
     end
 
